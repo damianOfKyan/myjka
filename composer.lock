@@ -967,9 +967,9 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Reinink",
-                    "email": "jonathan@reinink.ca",
-                    "homepage": "https://reinink.ca"
+                    "name": "Damian Boni",
+                    "email": "damianboni@gmail.com",
+                    "homepage": "https://damianboni.com"
                 }
             ],
             "description": "The Laravel adapter for Inertia.js.",
@@ -983,7 +983,7 @@
             },
             "funding": [
                 {
-                    "url": "https://github.com/reinink",
+                    "url": "https://github.com/damianOfKyan/myjka",
                     "type": "github"
                 }
             ],
@@ -1537,9 +1537,9 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Reinink",
-                    "email": "jonathan@reinink.ca",
-                    "homepage": "http://reinink.ca"
+                    "name": "Damian Boni",
+                    "email": "damianboni@gmail.com",
+                    "homepage": "http://damianboni.com"
                 }
             ],
             "description": "Wonderfully easy on-demand image manipulation library with an HTTP based API.",
@@ -1593,9 +1593,9 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Reinink",
-                    "email": "jonathan@reinink.ca",
-                    "homepage": "http://reinink.ca"
+                    "name": "Damian Boni",
+                    "email": "damianboni@gmail.com",
+                    "homepage": "http://damianboni.com"
                 }
             ],
             "description": "Glide adapter for Laravel",
@@ -1640,9 +1640,9 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Reinink",
-                    "email": "jonathan@reinink.ca",
-                    "homepage": "http://reinink.ca"
+                    "name": "Damian Boni",
+                    "email": "damianboni@gmail.com",
+                    "homepage": "http://damianboni.com"
                 }
             ],
             "description": "Glide adapter for Symfony",
