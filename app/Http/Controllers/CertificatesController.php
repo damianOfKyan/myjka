@@ -147,7 +147,6 @@ class CertificatesController extends Controller
     {
         $certificate->update(
             Request::validate([
-                'contractor_id' => ['required', 'max: 100'],
                 'series' => ['nullable', 'max: 10'],
                 'date_of_arrival' => ['nullable', 'max: 100'],
                 'date_of_departure' => ['nullable', 'max: 100'],
@@ -161,6 +160,8 @@ class CertificatesController extends Controller
                 'chamber' => ['nullable', 'max: 1'],
                 'partitions' => ['nullable', 'max: 1'],
                 'seals' => ['nullable', 'max: 200'],
+                'driver_id' => ['required', 'exists:contacts,id'],
+                'contractor_id' => ['required', 'exists:contractors,id'],
             ])
         );
 
