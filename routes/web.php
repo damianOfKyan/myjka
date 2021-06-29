@@ -119,6 +119,10 @@ Route::get('certificates/{certificate}/edit', [CertificatesController::class, 'e
     ->name('certificates.edit')
     ->middleware('auth');
 
+Route::get('certificates/{certificate}/print', [CertificatesController::class, 'print'])
+    ->name('certificates.print')
+    ->middleware('auth');
+
 Route::put('certificates/{certificate}', [CertificatesController::class, 'update'])
     ->name('certificates.update')
     ->middleware('auth');

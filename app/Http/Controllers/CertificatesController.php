@@ -181,4 +181,57 @@ class CertificatesController extends Controller
 
         return Redirect::back()->with('success', 'Certificate restored.');
     }
+
+    public function print(Certificate $certificate)
+    {
+        $contractor = [
+            $certificate->contractor()->get()->map->only(
+                'id',
+                'nip',
+                'name',
+                'code',
+                'contact_id'
+            )->first()
+            +
+            $certificate->contractor->contact()->get()->map->only(
+                'email',
+                'phone'
+            )->first()
+        ];
+        return Inertia::render('Certificates/Print', [
+            'certificate' => [
+                'id' => $certificate->id,
+                'series' => $certificate->series,
+                'date_of_arrival' => Carbon::parse(
+                    $certificate->date_of_arrival
+                )->format('Y-m-d'),
+                'date_of_departure' => Carbon::parse(
+                    $certificate->date_of_departure
+                )->format('Y-m-d'),
+                'tractor' => $certificate->tractor,
+                'bowser' => $certificate->bowser,
+                'container' => $certificate->container,
+                'last_product' => $certificate->last_product,
+                'washing_range' => $certificate->washing_range,
+                'washing_procedure' => $certificate->washing_procedure,
+                'detergents' => $certificate->detergents,
+                'chamber' => $certificate->chamber,
+                'partitions' => $certificate->partitions,
+                'seals' => $certificate->seals,
+                'deleted_at' => $certificate->deleted_at,
+                'contacts' => Contact::orderBy('first_name')->get(),
+                'contractors' => Contractor::orderBy('code')->get()->map->only('id', 'code', 'name'),
+                'driver_id' => $certificate->driver_id,
+                'contractor_id' => $certificate->contractor_id,
+                'driver' => $certificate->driver()->get()->map->only(
+                    'id',
+                    'first_name',
+                    'last_name',
+                    'phone',
+                    'email'
+                ),
+                'contractor' => $contractor
+            ],
+        ]);
+    }
 }

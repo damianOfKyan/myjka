@@ -35,6 +35,10 @@
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
           <button v-if="!certificate.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete Certificate</button>
+
+          <inertia-link class="px-6 py-4 flex text-green-700 items-center" :href="route('certificates.print', certificate.id)" tabindex="-1">
+            Print Certificate
+          </inertia-link>
           <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Update Certificate</loading-button>
         </div>
       </form>
