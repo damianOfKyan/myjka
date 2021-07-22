@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'owner' => true,
         ]);
 
-        User::factory(5)->create();
+        // User::factory(5)->create();
 
         $contacts = Contact::factory(100)->create();
 

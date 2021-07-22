@@ -16,10 +16,10 @@ class CreateCertificatesTable extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contractor_id')->constrained('contacts');
-            $table->foreignId('driver_id')->constrained('contacts');
+            $table->foreignId('driver_id')->nullable()->constrained('contacts');
             $table->string('series', 10)->nullable();
-            $table->dateTime('date_of_arrival', $precision = 0);
-            $table->dateTime('date_of_departure', $precision = 0);
+            $table->dateTime('date_of_arrival', $precision = 0)->nullable();
+            $table->dateTime('date_of_departure', $precision = 0)->nullable();
             $table->string('tractor', 20)->nullable();
             $table->string('bowser', 20)->nullable();
             $table->string('container', 20)->nullable();

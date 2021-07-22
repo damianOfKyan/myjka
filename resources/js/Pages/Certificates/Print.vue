@@ -7,11 +7,11 @@
     </h1>
     <button class="text-white btn-indigo ml-auto hover:underline" tabindex="-1" type="button" @click="generatePdf">Generate PDF</button>
 
-    <div id="pdf-generate" class="max-w-screen-md m-auto p-4 text-sm">
+    <div id="pdf-generate" class="max-w-screen-md m-auto p-4 text-sm bg-white mt-10">
       <div class="flex">
-        <div class="w-1/2 ">LOGO</div>
+        <div class="w-1/2 "><img :src="image_src" /></div>
         <div class="w-1/2 text-center text-white bg-blue-500 text-lg">
-          <h1 class="bg-blue-500">Certyfikat Czystosci</h1>
+          <h1 class="bg-blue-500">Certyfikat Czystości</h1>
           <h2>Cleaning Document</h2>
         </div>
       </div>
@@ -23,24 +23,28 @@
                 Myjnia Cystern Samochodowych
               </p>
               <p>
-                TANKWAGEN TANKWAGEN
-                TANKWAGENTANKWAGEN
-                TANKWAGEN
+                TANKWAGEN WASCHANLAGE
+                <br />
+                LA STATION DE LAVAGE
+                <br />
+                CLEANING STATION
               </p>
             </div>
             <div class="w-2/5 p-2">
               <p>
-                Carchem II Cwiklik Piotr
+                MRC Carchem II Ćwiklik Piotr
                 <br />
-                ul. Lukasiewicza 1
+                ul. Gospodarcza 3
                 <br />
-                78-400 Szczecinek
+                68-200 Żary
                 <br />
                 Polska
                 <br />
                 NIP - PL9930070175
                 <br />
                 tel. 0048 503 178 886
+                <br />
+                piotrcarchem@op.pl
               </p>
             </div>
           </div>
@@ -49,72 +53,79 @@
       <div class="flex border border-blue-500 border-t-0">
         <div class="w-1/2 p-2">
           <p>
-            1
+            <strong>1</strong>
           </p>
           <p>
-            Wjazd/Einfahrt/Arrival: 2020-12-10
+            <strong>Wjazd/Einfahrt/Arrival:</strong> {{ certificate.date_of_arrival }}
           </p>
           <p>
-            Wyjazd/Klant/Departure: 2020-12-10
-          </p>
-        </div>
-        <div class="w-1/2 p-2">
-          <p>
-            2
-          </p>
-          <p>
-            Seria / Serien-Nummer / Serial Number
-          </p>
-          <p>
-            PL 20128441
-          </p>
-        </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-1/2 p-2">
-          <p>
-            3 Nazwa Firmy / Klant / Client / Customer
-          </p>
-          <p>
-            Poltank Siegfried Hansen sp.j.
-            Tomaszowek 1A
-            26-332 Sławno
-            Polska
-            NIP: 768-182-59-51
+            <strong>Wyjazd/Klant/Departure:</strong> {{ certificate.date_of_departure }}
           </p>
         </div>
         <div class="w-1/2 p-2">
           <p>
-            4 Numer Identifikacyjny / Identificatiner / N0 d'identification / Identification Number
-            <br>
-            Pojazd / Fahrzeug / Vehicule / Vehicle
+            <strong>2</strong>
           </p>
           <p>
-            EOPCT16
+            <strong>Seria / Serien-Nummer / Serial Number</strong>
           </p>
           <p>
-            Cysterna, Tank-kontener / Tankwagen, Tank-kontener / Cisterne, Conteneur / Tank, Container
-          </p>
-          <p>
-            SLPC840
+            {{ certificate.series }}
           </p>
         </div>
       </div>
       <div class="flex border border-blue-500 border-t-0">
         <div class="w-1/2 p-2">
           <p>
-            5 Zakres Mycia / Waschen Bereich / Prestations complementaires / Additional Service
+            <strong>3 Nazwa Firmy / Klant / Client / Customer</strong>
           </p>
           <p>
-            EFTCO Code   Opis / Beschreibung / Deskripcjon / Description
+            {{ certificate.contractor.name }}
+            <br />
+            {{ certificate.contractor.address }}
+            <br />
+            {{ certificate.contractor.postal_code }}
+            <br />
+            {{ certificate.contractor.city }}
+            <br />
+            {{ certificate.contractor.country }}
+            <br />
+            NIP: {{ certificate.contractor.nip }}
           </p>
         </div>
         <div class="w-1/2 p-2">
           <p>
-            6 Procedura Mycia / Prozedur Bereich / Procedures de lavage / Cleaning Procedures
+            <strong>4 Numer Identifikacyjny / Identificatiner / NO d'identification / Identification Number</strong>
+            <br />
+            <strong>Pojazd / Fahrzeug / Vehicule / Vehicle</strong>
           </p>
           <p>
-            EFTCO Code   Opis / Beschreibung / Deskripcjon / Description
+            {{ certificate.tractor }}
+          </p>
+          <br />
+          <p>
+            <strong>Cysterna, Tank-kontener / Tankwagen, Tank-kontener / Cisterne, Conteneur / Tank, Container</strong>
+          </p>
+          <p>
+            {{ certificate.bowser }}
+          </p>
+        </div>
+      </div>
+      <div class="flex border border-blue-500 border-t-0">
+        <div class="w-1/2 p-2">
+          <p>
+            <strong>5 Zakres Mycia / Waschen Bereich / Prestations complementaires / Additional Service</strong>
+          </p>
+          <p>
+            <strong>EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</strong>
+          </p>
+        </div>
+        <div class="w-1/2 p-2">
+          <p>
+            <strong>6 Procedura Mycia / Prozedur Bereich / Procedures de lavage / Cleaning Procedures</strong>
+          </p>
+          <p>
+            <strong>EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</strong>
           </p>
         </div>
       </div>
@@ -197,8 +208,8 @@
       <div class="flex border border-blue-500 border-t-0">
         <div class="w-full p-2">
           <p>
-            7 Ostatni produkt / Letze Produkt / Demier Produit Transporte / Previous load
-            Nazwa / Nom / Name
+            <strong>7 Ostatni produkt / Letze Produkt / Demier Produit Transporte / Previous load
+            Nazwa / Nom / Name</strong>
           </p>
           <p>
             Hydrowax, Glycerin, Rizinusoel
@@ -208,7 +219,7 @@
       <div class="flex border border-blue-500 border-t-0">
         <div class="w-full p-2">
           <p>
-            8 Komentarz / Erklarung / Observations / Comments
+            <strong>8 Komentarz / Erklarung / Observations / Comments</strong>
           </p>
           <p>
             Cysterne oplombowano plombami nr
@@ -221,14 +232,14 @@
       <div class="flex border border-blue-500 border-t-0">
         <div class="w-full p-2">
           <p>
-            Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby
+            <strong>9 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</strong>
           </p>
         </div>
       </div>
       <div class="flex border border-blue-500 border-t-0">
         <div class="w-1/2 p-2">
           <p>
-            10 Pieczatka / Stamp / Stempel
+            <strong>10 Pieczatka / Stamp / Stempel</strong>
             <br />
             Nazwisko imie name / Nom
           </p>
@@ -239,7 +250,7 @@
         </div>
         <div class="w-1/2 p-2">
           <p>
-            11 Kierowca / Fahrer / Conducteur / Driver
+            <strong>11 Kierowca / Fahrer / Conducteur / Driver</strong>
             <br />
             Nazwisko imie / Name / Nom
           </p>
@@ -265,12 +276,14 @@ export default {
   layout: Layout,
   props: {
     certificate: Object,
+    logo: Object,
   },
-  mounted: () => {
-
-
-
+  data: () => {
+    return {
+      image_src: '/assets/logo.jpg',
+    }
   },
+  mounted: () => {},
   methods: {
     generatePdf() {
       var element = document.getElementById('pdf-generate')

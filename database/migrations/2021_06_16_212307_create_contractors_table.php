@@ -16,7 +16,7 @@ class CreateContractorsTable extends Migration
         Schema::create('contractors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contact_id')->constrained();
-            $table->string('code', 50)->unique()->index();
+            $table->string('code', 50)->nullable()->index();
             $table->string('name', 100)->nullable();
             $table->string('nip', 20)->unique()->index();
             $table->timestamps();

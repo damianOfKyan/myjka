@@ -34,12 +34,6 @@ Route::post('login', [AuthenticatedSessionController::class, 'store'])
 Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
 
-// Dashboard
-
-Route::get('/', [DashboardController::class, 'index'])
-    ->name('dashboard')
-    ->middleware('auth');
-
 // Users
 
 Route::get('users', [UsersController::class, 'index'])
@@ -72,7 +66,7 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
 
 // Contractors
 
-Route::get('contractors', [ContractorsController::class, 'index'])
+Route::get('/', [ContractorsController::class, 'index'])
     ->name('contractors')
     ->middleware('auth');
 

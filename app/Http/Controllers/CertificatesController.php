@@ -184,7 +184,7 @@ class CertificatesController extends Controller
 
     public function print(Certificate $certificate)
     {
-        $contractor = [
+        $contractor = (
             $certificate->contractor()->get()->map->only(
                 'id',
                 'nip',
@@ -195,9 +195,14 @@ class CertificatesController extends Controller
             +
             $certificate->contractor->contact()->get()->map->only(
                 'email',
+                'address',
+                'city',
+                'country',
+                'postal_code',
                 'phone'
             )->first()
-        ];
+        );
+
         return Inertia::render('Certificates/Print', [
             'certificate' => [
                 'id' => $certificate->id,
