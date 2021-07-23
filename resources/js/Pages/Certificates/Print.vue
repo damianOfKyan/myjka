@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1 class="mb-8 font-bold text-3xl">
-      <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('certificates')">Certificates</inertia-link>
+      <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('certificates')">{{ translate('messages.Certificates.Index.Self') }}</inertia-link>
       <span class="text-indigo-400 font-medium">/</span>
       <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('certificates.edit', certificate.id)">{{ certificate.series }}</inertia-link>
     </h1>
-    <button class="text-white btn-indigo ml-auto hover:underline" tabindex="-1" type="button" @click="generatePdf">Generate PDF</button>
+    <button class="text-white btn-indigo ml-auto hover:underline" tabindex="-1" type="button" @click="generatePdf">{{ translate('messages.GeneratePDF') }}</button>
 
     <div id="pdf-generate" class="max-w-screen-md m-auto p-4 text-sm bg-white mt-10">
       <div class="flex">

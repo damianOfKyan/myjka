@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html class="h-full bg-gray-100">
+<html class="h-full bg-gray-100" lang="{{ config('app.locale') }}">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="fallback_locale" content="{{ config('app.fallback_locale') }}">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 

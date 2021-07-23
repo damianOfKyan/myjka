@@ -1,32 +1,33 @@
 <template>
   <div>
-    <h1 class="mb-8 font-bold text-3xl">Certificates</h1>
+    <h1 class="mb-8 font-bold text-3xl">{{ translate('messages.Certificates.Index.Self') }}</h1>
     <div class="mb-6 flex justify-between items-center">
       <search-filter v-model="form.search" class="w-full max-w-md mr-4" @reset="reset">
-        <label class="block text-gray-700">Trashed:</label>
+        <label class="block text-gray-700">{{ translate('messages.trashed') }}:</label>
         <select v-model="form.trashed" class="mt-1 w-full form-select">
           <option :value="null" />
-          <option value="with">With Trashed</option>
-          <option value="only">Only Trashed</option>
+          <option value="with">{{ translate('messages.trashed_with') }}</option>
+          <option value="only">{{ translate('messages.trashed_only') }}</option>
         </select>
       </search-filter>
       <inertia-link class="btn-indigo" :href="route('certificates.create')">
-        <span>Create</span>
-        <span class="hidden md:inline">Certificate</span>
+        <span>{{ translate('messages.Create') }}</span>
+        <span class="hidden md:inline">{{ translate('messages.Certificate') }}</span>
       </inertia-link>
     </div>
     <div class="bg-white rounded-md shadow overflow-x-auto">
       <table class="w-full whitespace-nowrap">
         <tr class="text-left font-bold">
-          <th class="px-6 pt-6 pb-4">Contractor</th>
-          <th class="px-6 pt-6 pb-4">Series</th>
-          <th class="px-6 pt-6 pb-4">Date of Arrival</th>
-          <th class="px-6 pt-6 pb-4">Date of Departure</th>
-          <th class="px-6 pt-6 pb-4">Tractor</th>
-          <th class="px-6 pt-6 pb-4">Bowser</th>
-          <th class="px-6 pt-6 pb-4">Container</th>
-          <th class="px-6 pt-6 pb-4">Last Product</th>
-          <th class="px-6 pt-6 pb-4">Driver</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Contractor') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Series') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.DateOfArrival') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.DateOfDeparture') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Tractor') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Bowser') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Container') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.LastProduct') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Driver') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.WashingProcedure') }}</th>
         </tr>
         <tr v-for="certificate in certificates.data" :key="certificate.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
@@ -75,6 +76,11 @@
               {{ certificate.driver.first_name }} {{ certificate.driver.last_name }}
             </inertia-link>
           </td>
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('certificates.edit', certificate.id)" tabindex="-1">
+              {{ certificate.washingProcedure.name }}
+            </inertia-link>
+          </td>
           <td class="border-t w-px">
             <inertia-link class="px-4 flex items-center" :href="route('certificates.edit', certificate.id)" tabindex="-1">
               <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
@@ -82,7 +88,7 @@
           </td>
         </tr>
         <tr v-if="certificates.data.length === 0">
-          <td class="border-t px-6 py-4" colspan="4">No certificates found.</td>
+          <td class="border-t px-6 py-4" colspan="4">{{ translate('messages.NoCertificates') }}</td>
         </tr>
       </table>
     </div>

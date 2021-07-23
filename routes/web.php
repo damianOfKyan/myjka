@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ContactsController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\WashingProcedureController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\ContractorsController;
 use App\Http\Controllers\CertificatesController;
@@ -158,4 +158,34 @@ Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])
 
 Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
+    ->middleware('auth');
+
+// WashingProcedure
+
+Route::get('washing-procedures', [WashingProcedureController::class, 'index'])
+    ->name('washing-procedures')
+    ->middleware('auth');
+
+Route::get('washing-procedures/create', [WashingProcedureController::class, 'create'])
+    ->name('washing-procedures.create')
+    ->middleware('auth');
+
+Route::post('washing-procedures', [WashingProcedureController::class, 'store'])
+    ->name('washing-procedures.store')
+    ->middleware('auth');
+
+Route::get('washing-procedures/{washingProcedure}/edit', [WashingProcedureController::class, 'edit'])
+    ->name('washing-procedures.edit')
+    ->middleware('auth');
+
+Route::put('washing-procedures/{washingProcedure}', [WashingProcedureController::class, 'update'])
+    ->name('washing-procedures.update')
+    ->middleware('auth');
+
+Route::delete('washing-procedures/{washingProcedure}', [WashingProcedureController::class, 'destroy'])
+    ->name('washing-procedures.destroy')
+    ->middleware('auth');
+
+Route::put('washing-procedures/{washingProcedure}/restore', [WashingProcedureController::class, 'restore'])
+    ->name('washing-procedures.restore')
     ->middleware('auth');

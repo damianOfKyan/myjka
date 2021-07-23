@@ -52,7 +52,7 @@ class ContractorsController extends Controller
             ])
         );
 
-        return Redirect::route('contractors')->with('success', 'Contractor created.');
+        return Redirect::route('contractors')->with('success', __('messages.Created'));
     }
 
     public function edit(Contractor $contractor)
@@ -92,20 +92,20 @@ class ContractorsController extends Controller
             ]),
         );
 
-        return Redirect::back()->with('success', 'Contractor updated.');
+        return Redirect::back()->with('success', __('messages.Updated'));
     }
 
     public function destroy(Contractor $contractor)
     {
         $contractor->delete();
 
-        return Redirect::back()->with('success', 'Contractor deleted.');
+        return Redirect::back()->with('success', __('messages.Deleted'));
     }
 
     public function restore(Contractor $contractor)
     {
         $contractor->restore();
 
-        return Redirect::back()->with('success', 'Contractor restored.');
+        return Redirect::back()->with('success', __('messages.Restored'));
     }
 }

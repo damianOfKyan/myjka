@@ -16,7 +16,8 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "league/glide-laravel": "^1.0",
-        "tightenco/ziggy": "^0.8.0"
+        "tightenco/ziggy": "^0.8.0",
+        "tohidplus/laravel-vue-translation": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

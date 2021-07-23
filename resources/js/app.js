@@ -22,3 +22,10 @@ createInertiaApp({
     }).$mount(el)
   },
 })
+
+window.Vue = require('vue')
+// If you want to add to window object
+window.tranlate=require('./VueTranslation/Translation').default.translate
+
+// If you want to use it in your vue components
+Vue.prototype.translate=require('./VueTranslation/Translation').default.translate

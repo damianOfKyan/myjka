@@ -2,20 +2,26 @@
   <div>
     <div class="mb-4">
       <inertia-link class="flex items-center group py-3" :href="route('contractors')">
-        <icon name="office" class="w-4 h-4 mr-2" :class="isUrl('') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Contractors</div>
+        <icon name="book" class="w-4 h-4 mr-2" :class="isUrl('') || isUrl('contractors') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('') || isUrl('contractors') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">{{ translate('messages.Contractors.Self') }}</div>
       </inertia-link>
     </div>
     <div class="mb-4">
       <inertia-link class="flex items-center group py-3" :href="route('certificates')">
         <icon name="office" class="w-4 h-4 mr-2" :class="isUrl('certificates') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('certificates') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Certificates</div>
+        <div :class="isUrl('certificates') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">{{ translate('messages.Certificates.Self') }}</div>
       </inertia-link>
     </div>
     <div class="mb-4">
       <inertia-link class="flex items-center group py-3" :href="route('contacts')">
         <icon name="users" class="w-4 h-4 mr-2" :class="isUrl('contacts') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Contacts</div>
+        <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">{{ translate('messages.Contacts.Self') }}</div>
+      </inertia-link>
+    </div>
+    <div class="mb-4">
+      <inertia-link class="flex items-center group py-3" :href="route('washing-procedures')">
+        <icon name="office" class="w-4 h-4 mr-2" :class="isUrl('washing-procedures') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('washing-procedures') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">{{ translate('messages.WashingProcedures.Self') }}</div>
       </inertia-link>
     </div>
   </div>

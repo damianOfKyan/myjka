@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2347b99a03f00b03833fbf6823c6919e",
+    "content-hash": "1e0f244ecaaaac8b4fdcb8a4e22190bd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -421,6 +421,53 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
+        },
+        {
+            "name": "elementaryframework/fire-fs",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ElementaryFramework/FireFS.git",
+                "reference": "dc804ad697fb2b98af1735f3742dccd41ffe4598"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ElementaryFramework/FireFS/zipball/dc804ad697fb2b98af1735f3742dccd41ffe4598",
+                "reference": "dc804ad697fb2b98af1735f3742dccd41ffe4598",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.10"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ElementaryFramework\\FireFS\\": "src/FireFS/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Axel Nana",
+                    "email": "ax.lnana@outlook.com"
+                }
+            ],
+            "description": "Easily access and manage your files with PHP",
+            "keywords": [
+                "files",
+                "filesystem"
+            ],
+            "support": {
+                "issues": "https://github.com/ElementaryFramework/FireFS/issues",
+                "source": "https://github.com/ElementaryFramework/FireFS/tree/master"
+            },
+            "time": "2018-12-22T02:01:13+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -2089,59 +2136,6 @@
             "time": "2020-07-20T17:29:33+00:00"
         },
         {
-            "name": "protonemedia/inertiajs-tables-laravel-query-builder",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/protonemedia/inertiajs-tables-laravel-query-builder.git",
-                "reference": "1ab85f3b71c588606ee5d261b5e44b9bdf8f5415"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/protonemedia/inertiajs-tables-laravel-query-builder/zipball/1ab85f3b71c588606ee5d261b5e44b9bdf8f5415",
-                "reference": "1ab85f3b71c588606ee5d261b5e44b9bdf8f5415",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^8.0",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "inertiajs/inertia-laravel": "^0.4.0",
-                "orchestra/testbench": " ^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ProtoneMedia\\LaravelQueryBuilderInertiaJs\\InertiaTableServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ProtoneMedia\\LaravelQueryBuilderInertiaJs\\": "php"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pascal Baljet",
-                    "email": "pascal@protone.media"
-                }
-            ],
-            "description": "Inertia.js Front-end Components for Spatie's Laravel Query Builder",
-            "homepage": "https://github.com/protonemedia/inertiajs-tables-laravel-query-builder",
-            "support": {
-                "issues": "https://github.com/protonemedia/inertiajs-tables-laravel-query-builder/issues",
-                "source": "https://github.com/protonemedia/inertiajs-tables-laravel-query-builder/tree/1.1.1"
-            },
-            "time": "2021-04-12T08:33:01+00:00"
-        },
-        {
             "name": "psr/container",
             "version": "1.1.1",
             "source": {
@@ -2732,76 +2726,6 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
-        },
-        {
-            "name": "spatie/laravel-query-builder",
-            "version": "3.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "6c09f1f9d6c988bf2e1220be072c7bd1ac958cc9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/6c09f1f9d6c988bf2e1220be072c7bd1ac958cc9",
-                "reference": "6c09f1f9d6c988bf2e1220be072c7bd1ac958cc9",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^6.20.13|^7.30.4|^8.22.2",
-                "illuminate/http": "^6.20.13|7.30.4|^8.22.2",
-                "illuminate/support": "^6.20.13|7.30.4|^8.22.2",
-                "php": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "ext-json": "*",
-                "laravel/legacy-factories": "^1.0.4",
-                "mockery/mockery": "^1.4",
-                "orchestra/testbench": "^4.9|^5.8|^6.3",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\QueryBuilder\\QueryBuilderServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\QueryBuilder\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alex Vanderbist",
-                    "email": "alex@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Easily build Eloquent queries from API requests",
-            "homepage": "https://github.com/spatie/laravel-query-builder",
-            "keywords": [
-                "laravel-query-builder",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-query-builder/issues",
-                "source": "https://github.com/spatie/laravel-query-builder"
-            },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
-            "time": "2021-05-24T10:13:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5159,6 +5083,53 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.3"
             },
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "tohidplus/laravel-vue-translation",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tohidplus/laravel-vue-translation.git",
+                "reference": "14f95f7356cba3e3835095d1852e4e657ed98677"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tohidplus/laravel-vue-translation/zipball/14f95f7356cba3e3835095d1852e4e657ed98677",
+                "reference": "14f95f7356cba3e3835095d1852e4e657ed98677",
+                "shasum": ""
+            },
+            "require": {
+                "elementaryframework/fire-fs": "1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tohidplus\\Translation\\TranslationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tohidplus\\Translation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tohid",
+                    "email": "tohid.dadashnejad@gmail.com"
+                }
+            ],
+            "description": "A package to have Laravel translation feature in VueJs",
+            "support": {
+                "issues": "https://github.com/tohidplus/laravel-vue-translation/issues",
+                "source": "https://github.com/tohidplus/laravel-vue-translation/tree/2.1.3"
+            },
+            "time": "2021-05-19T12:42:27+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -7821,5 +7792,5 @@
         "ext-gd": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

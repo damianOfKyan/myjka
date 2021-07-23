@@ -1,37 +1,37 @@
 <template>
   <div>
     <h1 class="mb-8 font-bold text-3xl">
-      <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('contractors')">Contractors</inertia-link>
+      <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('contractors')">{{ translate('messages.Contractors.Edit.Contractors.Self') }}</inertia-link>
       <span class="text-indigo-400 font-medium">/</span>
       {{ form.code }}
     </h1>
     <trashed-message v-if="contractor.deleted_at" class="mb-6" @restore="restore">
-      This contractor has been deleted.
+      {{ translate('messages.Contractors.Edit.Deleted') }}
     </trashed-message>
     <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
       <form @submit.prevent="update">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
-          <text-input v-model="form.code" :error="form.errors.code" class="pr-6 pb-8 w-full lg:w-1/2" label="Code" />
-          <text-input v-model="form.name" :error="form.errors.name" class="pr-6 pb-8 w-full lg:w-1/2" label="Name" />
-          <text-input v-model="form.nip" :error="form.errors.nip" class="pr-6 pb-8 w-full lg:w-1/2" label="NIP" />
-          <select-input v-model="form.contact_id" :error="form.errors.contact_id" class="pr-6 pb-8 w-full lg:w-1/2" label="Contact">
+          <text-input v-model="form.code" :error="form.errors.code" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Edit.Contractors.Code')" />
+          <text-input v-model="form.name" :error="form.errors.name" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Edit.Contractors.Name')" />
+          <text-input v-model="form.nip" :error="form.errors.nip" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Edit.Contractors.NIP')" />
+          <select-input v-model="form.contact_id" :error="form.errors.contact_id" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Edit.Contractors.Contact')">
             <option :value="null" />
             <option v-for="contact in contractor.contacts" :key="contact.id" :value="contact.id">{{ contact.first_name }} {{ contact.last_name }}</option>
           </select-input>
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
-          <button v-if="!contractor.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete Contractor</button>
-          <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Update Contractor</loading-button>
+          <button v-if="!contractor.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">{{ translate('messages.Contractors.Edit.Delete') }}</button>
+          <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">{{ translate('messages.Save') }}</loading-button>
         </div>
       </form>
     </div>
-    <h2 class="mt-12 font-bold text-2xl">Contacts</h2>
+    <h2 class="mt-12 font-bold text-2xl">{{ translate('messages.Contractors.Edit.Contact') }}</h2>
     <div class="mt-6 bg-white rounded shadow overflow-x-auto">
       <table class="w-full whitespace-nowrap">
         <tr class="text-left font-bold">
-          <th class="px-6 pt-6 pb-4">Name</th>
-          <th class="px-6 pt-6 pb-4">City</th>
-          <th class="px-6 pt-6 pb-4" colspan="2">Phone</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Contractors.Edit.Contacts.Name') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Contractors.Edit.Contacts.City') }}</th>
+          <th class="px-6 pt-6 pb-4" colspan="2">{{ translate('messages.Contractors.Edit.Contacts.Phone') }}</th>
         </tr>
         <tr v-for="contact in contractor.contact" :key="contact.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
@@ -57,7 +57,7 @@
           </td>
         </tr>
         <tr v-if="contractor.contacts.length === 0">
-          <td class="border-t px-6 py-4" colspan="4">No contacts found.</td>
+          <td class="border-t px-6 py-4" colspan="4">{{ translate('messages.NoContacts') }}</td>
         </tr>
       </table>
     </div>

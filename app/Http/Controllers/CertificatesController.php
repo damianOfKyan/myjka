@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Certificate;
 use App\Models\Contact;
 use App\Models\Contractor;
+use App\Models\WashingProcedure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
@@ -37,7 +38,7 @@ class CertificatesController extends Controller
                     'container' => $certificate->container,
                     'last_product' => $certificate->last_product,
                     'washing_range' => $certificate->washing_range,
-                    'washing_procedure' => $certificate->washing_procedure,
+                    'washingProcedure' => $certificate->washingProcedure,
                     'detergents' => $certificate->detergents,
                     'chamber' => $certificate->chamber,
                     'partitions' => $certificate->partitions,
@@ -60,6 +61,10 @@ class CertificatesController extends Controller
                     'id',
                     'name',
                     'code'
+                ),
+                'washingProcedures' => Contractor::orderBy('name')->get()->map->only(
+                    'id',
+                    'name'
                 )
             ]
         ]);
@@ -87,7 +92,7 @@ class CertificatesController extends Controller
             ])
         );
 
-        return Redirect::route('certificates')->with('success', 'Certificate created.');
+        return Redirect::route('certificates')->with('success', __('messages.Created'));
     }
 
     public function edit(Certificate $certificate)
@@ -112,16 +117,16 @@ class CertificatesController extends Controller
                 'series' => $certificate->series,
                 'date_of_arrival' => Carbon::parse(
                     $certificate->date_of_arrival
-                )->format('Y-m-d'),
+                )->format('Y-m-d\TH:i'),
                 'date_of_departure' => Carbon::parse(
                     $certificate->date_of_departure
-                )->format('Y-m-d'),
+                )->format('Y-m-d\TH:i'),
                 'tractor' => $certificate->tractor,
                 'bowser' => $certificate->bowser,
                 'container' => $certificate->container,
                 'last_product' => $certificate->last_product,
                 'washing_range' => $certificate->washing_range,
-                'washing_procedure' => $certificate->washing_procedure,
+                // 'washing_procedure' => $certificate->washing_procedure,
                 'detergents' => $certificate->detergents,
                 'chamber' => $certificate->chamber,
                 'partitions' => $certificate->partitions,
@@ -129,6 +134,8 @@ class CertificatesController extends Controller
                 'deleted_at' => $certificate->deleted_at,
                 'contacts' => Contact::orderBy('first_name')->get(),
                 'contractors' => Contractor::orderBy('code')->get()->map->only('id', 'code', 'name'),
+                'washingProcedures' => WashingProcedure::orderBy('name')->get()->map->only('id', 'name'),
+                'washing_procedure_id' => $certificate->washing_procedure_id,
                 'driver_id' => $certificate->driver_id,
                 'contractor_id' => $certificate->contractor_id,
                 'driver' => $certificate->driver()->get()->map->only(
@@ -138,7 +145,12 @@ class CertificatesController extends Controller
                     'phone',
                     'email'
                 ),
-                'contractor' => $contractor
+                'contractor' => $contractor,
+                'washingProcedure' => $certificate->washingProcedure()->get()->map->only(
+                    'id',
+                    'name',
+                    'description',
+                ),
             ],
         ]);
     }
@@ -165,21 +177,21 @@ class CertificatesController extends Controller
             ])
         );
 
-        return Redirect::back()->with('success', 'Certificate updated.');
+        return Redirect::back()->with('success', __('messages.Updated'));
     }
 
     public function destroy(Certificate $certificate)
     {
         $certificate->delete();
 
-        return Redirect::back()->with('success', 'Certificate deleted.');
+        return Redirect::back()->with('success', __('messages.Deleted'));
     }
 
     public function restore(Certificate $certificate)
     {
         $certificate->restore();
 
-        return Redirect::back()->with('success', 'Certificate restored.');
+        return Redirect::back()->with('success', __('messages.Restored'));
     }
 
     public function print(Certificate $certificate)

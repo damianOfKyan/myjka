@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Models\Contractor;
-
 class Certificate extends Model
 {
     use HasFactory;
@@ -21,6 +19,11 @@ class Certificate extends Model
     public function driver()
     {
         return $this->belongsTo(Contact::class, 'driver_id');
+    }
+
+    public function washingProcedure()
+    {
+        return $this->belongsTo(WashingProcedure::class, 'washing_procedure_id');
     }
 
     public function resolveRouteBinding($value, $field = null)
@@ -43,7 +46,11 @@ class Certificate extends Model
                 ->orWhereHas('Driver', function($q) use ($search) {
                     $q->where('first_name', 'like', '%'.$search.'%')
                     ->orWhere('last_name', 'like', '%'.$search.'%');
-                });
+                })
+                ->orWhereHas('WashingProcedure', function($q) use ($search) {
+                    $q->where('name', 'like', '%'.$search.'%')
+                    ->orWhere('description', 'like', '%'.$search.'%');
+                });;
             });
         })->when($filters['trashed'] ?? null, function ($query, $trashed) {
             if ($trashed === 'with') {

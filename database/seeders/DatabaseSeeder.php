@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Contact;
 use App\Models\Contractor;
 use App\Models\Certificate;
+use App\Models\WashingProcedure;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
 
         // User::factory(5)->create();
 
+        $washingProcedures = WashingProcedure::factory(100)->create();
         $contacts = Contact::factory(100)->create();
 
         $contractors = Contractor::factory(100)
@@ -39,11 +41,13 @@ class DatabaseSeeder extends Seeder
         $certificates = Certificate::factory(100)
             ->create([
                 'contractor_id' => $contractors->random()->id,
-                'driver_id' => $contacts->random()->id
+                'driver_id' => $contacts->random()->id,
+                'washing_procedure_id' => $washingProcedures->random()->id
             ])
-            ->each(function ($certificates) use ($contractors, $contacts) {
+            ->each(function ($certificates) use ($contractors, $contacts, $washingProcedures) {
                 $certificates->update(['contractor_id' => $contractors->random()->id]);
                 $certificates->update(['driver_id' => $contacts->random()->id]);
+                $certificates->update(['washing_procedure_id' => $washingProcedures->random()->id]);
             });
     }
 }
