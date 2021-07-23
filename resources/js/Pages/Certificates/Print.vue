@@ -7,7 +7,7 @@
     </h1>
     <button class="text-white btn-indigo ml-auto hover:underline" tabindex="-1" type="button" @click="generatePdf">{{ translate('messages.GeneratePDF') }}</button>
 
-    <div id="pdf-generate" class="max-w-screen-md m-auto p-4 text-sm bg-white mt-10">
+    <div id="pdf-generate" class="max-w-screen-md m-auto p-2 text-sm bg-white mt-10">
       <div class="flex">
         <div class="w-1/2 "><img :src="image_src" /></div>
         <div class="w-1/2 text-center text-white bg-blue-500 text-lg">
@@ -258,7 +258,6 @@
           <p>
             Rudnyk Bogdan
           </p>
-          <br />
           <p>
             Podpis / Utershift / Signature
           </p>
