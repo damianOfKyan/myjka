@@ -18,8 +18,8 @@
     <div class="bg-white rounded-md shadow overflow-x-auto">
       <table class="w-full whitespace-nowrap">
         <tr class="text-left font-bold">
-          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Contractor') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Series') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Contractor') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.DateOfArrival') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.DateOfDeparture') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Tractor') }}</th>
@@ -28,6 +28,8 @@
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.LastProduct') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Driver') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.WashingProcedure') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.WashingRange') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Detergent') }}</th>
         </tr>
         <tr v-for="certificate in certificates.data" :key="certificate.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
@@ -73,12 +75,22 @@
           </td>
           <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('certificates.edit', certificate.id)" tabindex="-1">
-              {{ certificate.driver.first_name }} {{ certificate.driver.last_name }}
+              {{ certificate.driver && certificate.driver.first_name }} {{ certificate.driver && certificate.driver.last_name }}
             </inertia-link>
           </td>
           <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('certificates.edit', certificate.id)" tabindex="-1">
-              {{ certificate.washingProcedure.name }}
+              {{ certificate.washing_procedure }}
+            </inertia-link>
+          </td>
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('certificates.edit', certificate.id)" tabindex="-1">
+              {{ certificate.washing_range }}
+            </inertia-link>
+          </td>
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('certificates.edit', certificate.id)" tabindex="-1">
+              {{ certificate.detergent }}
             </inertia-link>
           </td>
           <td class="border-t w-px">

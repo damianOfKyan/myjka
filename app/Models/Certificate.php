@@ -13,17 +13,27 @@ class Certificate extends Model
 
     public function contractor()
     {
-        return $this->belongsTo(Contractor::class, 'contractor_id');
+        return $this->belongsTo(Contractor::class);
     }
 
     public function driver()
     {
-        return $this->belongsTo(Contact::class, 'driver_id');
+        return $this->belongsTo(Contact::class);
     }
 
     public function washingProcedure()
     {
-        return $this->belongsTo(WashingProcedure::class, 'washing_procedure_id');
+        return $this->belongsToMany(WashingProcedure::class);
+    }
+
+    public function washingRange()
+    {
+        return $this->belongsToMany(WashingRange::class);
+    }
+
+    public function detergent()
+    {
+        return $this->belongsToMany(Detergent::class);
     }
 
     public function resolveRouteBinding($value, $field = null)
@@ -38,6 +48,12 @@ class Certificate extends Model
             $query->with('driver');
             $query->where(function ($query) use ($search) {
                 $query->where('series', 'like', '%'.$search.'%')
+                ->orWhere('date_of_arrival', 'like', '%'.$search.'%')
+                ->orWhere('date_of_departure', 'like', '%'.$search.'%')
+                ->orWhere('tractor', 'like', '%'.$search.'%')
+                ->orWhere('bowser', 'like', '%'.$search.'%')
+                ->orWhere('container', 'like', '%'.$search.'%')
+                ->orWhere('last_product', 'like', '%'.$search.'%')
                 ->orWhereHas('Contractor', function($q) use ($search) {
                     $q->where('name', 'like', '%'.$search.'%')
                     ->orWhere('code', 'like', '%'.$search.'%')
@@ -48,9 +64,14 @@ class Certificate extends Model
                     ->orWhere('last_name', 'like', '%'.$search.'%');
                 })
                 ->orWhereHas('WashingProcedure', function($q) use ($search) {
-                    $q->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('description', 'like', '%'.$search.'%');
-                });;
+                    $q->where('name', 'like', '%'.$search.'%');
+                })
+                ->orWhereHas('WashingRange', function($q) use ($search) {
+                    $q->where('name', 'like', '%'.$search.'%');
+                })
+                ->orWhereHas('Detergent', function($q) use ($search) {
+                    $q->where('name', 'like', '%'.$search.'%');
+                });
             });
         })->when($filters['trashed'] ?? null, function ($query, $trashed) {
             if ($trashed === 'with') {

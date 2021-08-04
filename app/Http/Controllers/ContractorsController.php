@@ -43,10 +43,10 @@ class ContractorsController extends Controller
         Contractor::create(
             Request::validate([
                 'code' => ['required', 'max:50'],
-                'name' => ['nullable', 'max:100'],
+                'name' => ['required', 'max:100'],
                 'nip' => ['required', 'max:20'],
                 'contact_id' => [
-                    'nullable',
+                    'required',
                     'exists:contacts,id'
                 ],
             ])

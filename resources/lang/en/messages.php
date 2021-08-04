@@ -61,6 +61,7 @@ return [
             'Driver' => 'Kierowca',
             'WashingRange' => 'Zakres Mycia',
             'WashingProcedure' => 'Procedura Mycia',
+            'Detergent' => 'Środki Mycia',
         ],
         'Create' => [
             'Self' => 'Certyfikaty',
@@ -74,9 +75,13 @@ return [
             'LastProduct' => 'Ostatni Produkt',
             'Driver' => 'Kierowca',
             'WashingRange' => 'Zakres Mycia',
+            'WashingRanges' => 'Zakresy Mycia',
             'WashingProcedure' => 'Procedura Mycia',
+            'WashingProcedures' => 'Procedury Mycia',
+            'Detergent' => 'Środki Mycia',
             'Detergents' => 'Środki Mycia',
             'Chamber' => 'Komora',
+            'Chambers' => 'Komory',
             'Partitions' => 'Przegrody',
             'Seals' => 'Plomby',
         ],
@@ -91,14 +96,22 @@ return [
             'Container' => 'Kontener',
             'LastProduct' => 'Ostatni Produkt',
             'Driver' => 'Kierowca',
-            'WashingRange' => 'Zakres Mycia',
-            'WashingProcedure' => [
-                'Self' => 'Procedura Mycia',
+            'WashingRange' => [
+                'Self' => 'Zakresy Mycia',
                 'Name' => 'Nazwa',
                 'Description' => 'Opis'
             ],
-            'Detergents' => 'Środki Mycia',
-            'Chamber' => 'Komora',
+            'WashingProcedure' => [
+                'Self' => 'Procedury Mycia',
+                'Name' => 'Nazwa',
+                'Description' => 'Opis'
+            ],
+            'Detergent' => [
+                'Self' => 'Środki Mycia',
+                'Name' => 'Nazwa',
+                'Description' => 'Opis'
+            ],
+            'Chamber' => 'Komory',
             'Partitions' => 'Przegrody',
             'Seals' => 'Plomby',
             'Deleted' => 'Ten Certyfikat został usunięty.',
@@ -178,6 +191,46 @@ return [
             'Description' => 'Opis',
         ]
     ],
+    'WashingRanges' => [
+        'Self' => 'Zakresy Mycia',
+        'Index' => [
+            'Self' => 'Zakres Mycia',
+            'Name' => 'Nazwa',
+            'Description' => 'Opis',
+        ],
+        'Edit' => [
+            'Self' => 'Zakres Mycia',
+            'Name' => 'Nazwa',
+            'Description' => 'Opis',
+            'Deleted' => 'Ta Zakres Mycia został usunięty.',
+            'Delete' => 'Usuń Zakres Mycia'
+        ],
+        'Create' => [
+            'Self' => 'Zakresy Mycia',
+            'Name' => 'Nazwa',
+            'Description' => 'Opis',
+        ]
+    ],
+    'Detergents' => [
+        'Self' => 'Środki Mycia',
+        'Index' => [
+            'Self' => 'Środki Mycia',
+            'Name' => 'Nazwa',
+            'Description' => 'Opis',
+        ],
+        'Edit' => [
+            'Self' => 'Środki Mycia',
+            'Name' => 'Nazwa',
+            'Description' => 'Opis',
+            'Deleted' => 'Ten Środek Mycia został usunięty.',
+            'Delete' => 'Usuń Środek Mycia'
+        ],
+        'Create' => [
+            'Self' => 'Środek Mycia',
+            'Name' => 'Nazwa',
+            'Description' => 'Opis',
+        ]
+    ],
     'Layout' => [
         'MyProfile' => 'Mój Profil',
         'Logout' => 'Wylogój się'
@@ -199,7 +252,7 @@ return [
     'contractor' => 'Kontrahent',
     'Contact' => 'Kontakt',
     'trashed' => 'Usunięte',
-    'trashed_width' => 'z Usunięte',
+    'trashed_with' => 'z Usunięte',
     'trashed_only' => 'tylko Usunięte',
     'Create' => 'Stwórz',
     'New' => 'Nowy',
@@ -212,7 +265,10 @@ return [
     'NoCertificates' => 'Nie znaleziono Certyfikatów',
     'NoDrivers' => 'Nie znaleziono Kierowców',
     'NoWashingProcedures' => 'Nie znaleziono Procedór Mycia',
+    'NoWashingRanges' => 'Nie znaleziono Zakresów Mycia',
+    'NoDetergents' => 'Nie znaleziono Środków Mycia',
     'GeneratePDF' => 'Wygeneruj dokument PDF',
+    'PickSome' => 'Pick some',
     'Login' => [
         'Welcome' => 'Witaj',
         'Email' => 'Email',

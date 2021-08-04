@@ -29,12 +29,9 @@ class CertificateFactory extends Factory
             'bowser' => $this->faker->randomNumber,
             'container' => $this->faker->randomNumber,
             'last_product' => $this->faker->word,
-            'washing_range' => $this->faker->randomNumber(1),
-            'washing_procedure' => $this->faker->randomNumber(1),
-            'detergents' => $this->faker->randomNumber(1),
-            'chamber' => $this->faker->randomNumber(1),
+            'chamber' => $this->faker->randomNumber(1) . ',' . $this->faker->randomNumber(1),
             'partitions' => $this->faker->randomNumber(1) . ',' . $this->faker->randomNumber(1),
-            'seals' => $this->faker->randomNumber(1),
+            'seals' => $this->faker->randomNumber(1) . ',' . $this->faker->randomNumber(1),
         ];
     }
 }

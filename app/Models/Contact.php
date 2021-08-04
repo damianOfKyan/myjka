@@ -49,6 +49,10 @@ class Contact extends Model
                     ->orWhere('last_name', 'like', '%'.$search.'%')
                     ->orWhere('email', 'like', '%'.$search.'%')
                     ->orWhere('phone', 'like', '%'.$search.'%')
+                    ->orWhere('address', 'like', '%'.$search.'%')
+                    ->orWhere('postal_code', 'like', '%'.$search.'%')
+                    ->orWhere('city', 'like', '%'.$search.'%')
+                    ->orWhere('country', 'like', '%'.$search.'%')
                     ->orWhereHas('contractor', function ($query) use ($search) {
                         $query->where('name', 'like', '%'.$search.'%');
                     });

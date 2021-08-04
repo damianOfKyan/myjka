@@ -6,6 +6,8 @@ use App\Models\Contact;
 use App\Models\Contractor;
 use App\Models\Certificate;
 use App\Models\WashingProcedure;
+use App\Models\WashingRange;
+use App\Models\Detergent;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -25,29 +27,36 @@ class DatabaseSeeder extends Seeder
             'owner' => true,
         ]);
 
-        // User::factory(5)->create();
+        // $washingProcedures = WashingProcedure::factory(100)->create();
+        // $washingRanges = WashingRange::factory(100)->create();
+        // $detergents = Detergent::factory(100)->create();
+        // $contacts = Contact::factory(100)->create();
 
-        $washingProcedures = WashingProcedure::factory(100)->create();
-        $contacts = Contact::factory(100)->create();
+        // $contractors = Contractor::factory(100)
+        //     ->create([
+        //         'contact_id' => $contacts->random()->id
+        //     ])
+        //     ->each(function ($contractors) {
+        //         $contractors->update(['contact_id' => $contractors->id]);
+        //     });
 
-        $contractors = Contractor::factory(100)
-            ->create([
-                'contact_id' => $contacts->random()->id
-            ])
-            ->each(function ($contractors) {
-                $contractors->update(['contact_id' => $contractors->id]);
-            });
-
-        $certificates = Certificate::factory(100)
-            ->create([
-                'contractor_id' => $contractors->random()->id,
-                'driver_id' => $contacts->random()->id,
-                'washing_procedure_id' => $washingProcedures->random()->id
-            ])
-            ->each(function ($certificates) use ($contractors, $contacts, $washingProcedures) {
-                $certificates->update(['contractor_id' => $contractors->random()->id]);
-                $certificates->update(['driver_id' => $contacts->random()->id]);
-                $certificates->update(['washing_procedure_id' => $washingProcedures->random()->id]);
-            });
+        // $certificates = Certificate::factory(100)
+        //     ->create([
+        //         'contractor_id' => $contractors->random()->id,
+        //         'driver_id' => $contacts->random()->id
+        //     ])
+        //     ->each(function ($certificates) use (
+        //         $contractors,
+        //         $contacts,
+        //         $washingProcedures,
+        //         $washingRanges,
+        //         $detergents
+        //     ) {
+        //         $certificates->update(['contractor_id' => $contractors->random()->id]);
+        //         $certificates->update(['driver_id' => $contacts->random()->id]);
+        //         $certificates->washingRange()->sync([$washingRanges->random()->id, $washingRanges->random()->id]);
+        //         $certificates->washingProcedure()->sync([$washingProcedures->random()->id, $washingProcedures->random()->id]);
+        //         $certificates->detergent()->sync([$detergents->random()->id, $detergents->random()->id]);
+        //     });
     }
 }

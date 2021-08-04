@@ -27,20 +27,17 @@
           <text-input v-model="form.bowser" :error="form.errors.bowser" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Bowser')" />
           <text-input v-model="form.container" :error="form.errors.container" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Container')" />
           <text-input v-model="form.last_product" :error="form.errors.last_product" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.LastProduct')" />
-          <number-input v-model="form.washing_range" :error="form.errors.washing_range" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.WashingRange')" />
-          <select-input v-model="form.washing_procedure_id" :error="form.errors.washing_procedure_id" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.WashingProcedure.Self')">
-            <option :value="null" />
-            <option v-for="washingProcedure in certificate.washingProcedures" :key="washingProcedure.id" :value="washingProcedure.id">{{ washingProcedure.name }}</option>
-          </select-input>
-          <number-input v-model="form.detergents" :error="form.errors.detergents" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Detergents')" />
-          <number-input v-model="form.chamber" :error="form.errors.chamber" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Chamber')" />
+          <multi-select-input v-model="form.washing_range" :options="certificate.washing_ranges" :multiple="true" :close-on-select="true" :error="form.errors.washing_range" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.WashingRange.Self')" />
+          <multi-select-input v-model="form.washing_procedure" :options="certificate.washing_procedures" :multiple="true" :close-on-select="true" :error="form.errors.washing_procedure" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.WashingProcedure.Self')" />
+          <multi-select-input v-model="form.detergent" :options="certificate.detergents" :multiple="true" :close-on-select="true" :error="form.errors.detergents" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Detergent.Self')" />
+          <text-input v-model="form.chamber" :error="form.errors.chamber" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Chamber')" />
           <text-input v-model="form.partitions" :error="form.errors.partitions" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Partitions')" />
           <text-input v-model="form.seals" :error="form.errors.seals" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Seals')" />
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
           <button v-if="!certificate.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">{{ translate('messages.Certificates.Edit.Delete') }}</button>
 
-          <inertia-link class="px-6 py-4 flex text-green-700 items-center" :href="route('certificates.print', certificate.id)" tabindex="-1">
+          <inertia-link class="px-6 py-4 flex text-green-700 items-center hover:underline" :href="route('certificates.print', certificate.id)" tabindex="-1">
             {{ translate('messages.Certificates.Edit.Print') }}
           </inertia-link>
           <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">{{ translate('messages.Save') }}</loading-button>
@@ -138,26 +135,86 @@
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Edit.WashingProcedure.Name') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Edit.WashingProcedure.Description') }}</th>
         </tr>
-        <tr v-for="washingProcedure in certificate.washingProcedure" :key="washingProcedure.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+        <tr v-for="washing_procedure in certificate.washing_procedure" :key="washing_procedure.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('washing-procedures.edit', washingProcedure.id)">
-              {{ washingProcedure.name }}
-              <icon v-if="washingProcedure.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
+            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('washing-procedures.edit', washing_procedure.id)">
+              {{ washing_procedure.name }}
+              <icon v-if="washing_procedure.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
             </inertia-link>
           </td>
           <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center" :href="route('washing-procedures.edit', washingProcedure.id)" tabindex="-1">
-              {{ washingProcedure.description }}
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('washing-procedures.edit', washing_procedure.id)" tabindex="-1">
+              {{ washing_procedure.description }}
             </inertia-link>
           </td>
           <td class="border-t w-px">
-            <inertia-link class="px-4 flex items-center" :href="route('washing-procedures.edit', washingProcedure.id)" tabindex="-1">
+            <inertia-link class="px-4 flex items-center" :href="route('washing-procedures.edit', washing_procedure.id)" tabindex="-1">
               <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
             </inertia-link>
           </td>
         </tr>
         <tr v-if="certificate.driver.length === 0">
           <td class="border-t px-6 py-4" colspan="4">{{ translate('messages.NoWashingProcedures') }}</td>
+        </tr>
+      </table>
+    </div>
+    <h2 class="mt-12 font-bold text-2xl">{{ translate('messages.Certificates.Edit.WashingRange.Self') }}</h2>
+    <div class="mt-6 bg-white rounded shadow overflow-x-auto">
+      <table class="w-full whitespace-nowrap">
+        <tr class="text-left font-bold">
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Edit.WashingRange.Name') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Edit.WashingRange.Description') }}</th>
+        </tr>
+        <tr v-for="washing_range in certificate.washing_range" :key="washing_range.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('washing-ranges.edit', washing_range.id)">
+              {{ washing_range.name }}
+              <icon v-if="washing_range.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
+            </inertia-link>
+          </td>
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('washing-ranges.edit', washing_range.id)" tabindex="-1">
+              {{ washing_range.description }}
+            </inertia-link>
+          </td>
+          <td class="border-t w-px">
+            <inertia-link class="px-4 flex items-center" :href="route('washing-ranges.edit', washing_range.id)" tabindex="-1">
+              <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
+            </inertia-link>
+          </td>
+        </tr>
+        <tr v-if="certificate.driver.length === 0">
+          <td class="border-t px-6 py-4" colspan="4">{{ translate('messages.NoWashingRanges') }}</td>
+        </tr>
+      </table>
+    </div>
+    <h2 class="mt-12 font-bold text-2xl">{{ translate('messages.Certificates.Edit.Detergent.Self') }}</h2>
+    <div class="mt-6 bg-white rounded shadow overflow-x-auto">
+      <table class="w-full whitespace-nowrap">
+        <tr class="text-left font-bold">
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Edit.Detergent.Name') }}</th>
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Edit.Detergent.Description') }}</th>
+        </tr>
+        <tr v-for="detergent in certificate.detergent" :key="detergent.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('detergents.edit', detergent.id)">
+              {{ detergent.name }}
+              <icon v-if="detergent.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
+            </inertia-link>
+          </td>
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('detergents.edit', detergent.id)" tabindex="-1">
+              {{ detergent.description }}
+            </inertia-link>
+          </td>
+          <td class="border-t w-px">
+            <inertia-link class="px-4 flex items-center" :href="route('detergents.edit', detergent.id)" tabindex="-1">
+              <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
+            </inertia-link>
+          </td>
+        </tr>
+        <tr v-if="certificate.driver.length === 0">
+          <td class="border-t px-6 py-4" colspan="4">{{ translate('messages.NoDetergents') }}</td>
         </tr>
       </table>
     </div>
@@ -168,8 +225,8 @@
 import Icon from '@/Shared/Icon'
 import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
-import NumberInput from '@/Shared/NumberInput'
 import SelectInput from '@/Shared/SelectInput'
+import MultiSelectInput from '@/Shared/MultiSelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 import TrashedMessage from '@/Shared/TrashedMessage'
 import DateInput from '@/Shared/DateTimeInput'
@@ -182,8 +239,8 @@ export default {
     Icon,
     LoadingButton,
     SelectInput,
+    MultiSelectInput,
     TextInput,
-    NumberInput,
     TrashedMessage,
     DateInput,
   },
@@ -205,10 +262,10 @@ export default {
         washing_range: this.certificate.washing_range,
         washing_procedure: this.certificate.washing_procedure,
         detergents: this.certificate.detergents,
+        detergent: this.certificate.detergent,
         chamber: this.certificate.chamber,
         partitions: this.certificate.partitions,
         seals: this.certificate.seals,
-        washing_procedure_id: this.certificate.washing_procedure_id,
         contractor_id: this.certificate.contractor_id,
         driver_id: this.certificate.driver_id,
       }),
@@ -219,12 +276,12 @@ export default {
       this.form.put(this.route('certificates.update', this.certificate.id))
     },
     destroy() {
-      if (confirm('Are you sure you want to delete this certificate?')) {
+      if (confirm('Potwierdz usunięcie/Confirm delete')) {
         this.$inertia.delete(this.route('certificates.destroy', this.certificate.id))
       }
     },
     restore() {
-      if (confirm('Are you sure you want to restore this certificate?')) {
+      if (confirm('Potwierdz odnowienie/Confirm restore')) {
         this.$inertia.put(this.route('certificates.restore', this.certificate.id))
       }
     },

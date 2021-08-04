@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h1 class="mb-8 font-bold text-3xl">
+    <h1 class="mb-8 font-sans font-bold text-3xl">
       <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('certificates')">{{ translate('messages.Certificates.Index.Self') }}</inertia-link>
       <span class="text-indigo-400 font-medium">/</span>
       <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('certificates.edit', certificate.id)">{{ certificate.series }}</inertia-link>
     </h1>
-    <button class="text-white btn-indigo ml-auto hover:underline" tabindex="-1" type="button" @click="generatePdf">{{ translate('messages.GeneratePDF') }}</button>
+    <button class="text-white btn-indigo ml-auto hover:underline mb-8" tabindex="-1" type="button" @click="generatePdf">{{ translate('messages.GeneratePDF') }}</button>
 
-    <div id="pdf-generate" class="max-w-screen-md m-auto p-2 text-sm bg-white mt-10">
+    <div id="pdf-generate" class="max-w-screen-md m-auto p-2 text-sm bg-white mt-2">
       <div class="flex">
-        <div class="w-1/2 "><img :src="image_src" /></div>
+        <div class="w-1/2 pb-2 pl-2"><img :src="image_src" width="35%" height="35%" /></div>
         <div class="w-1/2 text-center text-white bg-blue-500 text-lg">
           <h1 class="bg-blue-500">Certyfikat Czystości</h1>
           <h2>Cleaning Document</h2>
@@ -36,15 +36,13 @@
                 <br />
                 ul. Gospodarcza 3
                 <br />
-                68-200 Żary
-                <br />
-                Polska
+                68-200 Żary, Polska
                 <br />
                 NIP - PL9930070175
                 <br />
-                tel. 0048 503 178 886
+                kontakt: tel. 0048 503 178 886,
                 <br />
-                piotrcarchem@op.pl
+                e-mail: piotrcarchem@op.pl
               </p>
             </div>
           </div>
@@ -53,10 +51,7 @@
       <div class="flex border border-blue-500 border-t-0">
         <div class="w-1/2 p-2">
           <p>
-            <strong>1</strong>
-          </p>
-          <p>
-            <strong>Wjazd/Einfahrt/Arrival:</strong> {{ certificate.date_of_arrival }}
+            <strong>1 Wjazd/Einfahrt/Arrival:</strong> {{ certificate.date_of_arrival }}
           </p>
           <p>
             <strong>Wyjazd/Klant/Departure:</strong> {{ certificate.date_of_departure }}
@@ -64,10 +59,7 @@
         </div>
         <div class="w-1/2 p-2">
           <p>
-            <strong>2</strong>
-          </p>
-          <p>
-            <strong>Seria / Serien-Nummer / Serial Number</strong>
+            <strong>2 Seria / Serien-Nummer / Serial Number</strong>
           </p>
           <p>
             {{ certificate.series }}
@@ -133,8 +125,22 @@
         <div class="w-1/2 p-2">
           <div>
             <div class="flex">
-              <div class="w-1/4">
-                <p>
+              <div class="w-4/4">
+                <span v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
+                  {{ washing_procedure.name }},
+                </span>
+                <!-- <table class="w-full whitespace-nowrap">
+                  <tr v-for="washing_range in certificate.washing_ranges" :key="washing_range.id">
+                    <td>
+                      {{ washing_range.name }}
+                    </td>
+                  </tr>
+                </table> -->
+                <!-- {{ certificate.washing_range }} -->
+                <!-- {{ certificate.washing_procedure_id }}
+                {{ certificate.washing_procedures }} -->
+
+                <!-- <p>
                   E50
                 </p>
                 <p>
@@ -145,24 +151,7 @@
                 </p>
                 <p>
                   E99
-                </p>
-              </div>
-              <div class="w-3/4">
-                <p>
-                  Wszystkie Przegrody
-                </p>
-                <p>
-                  Weze
-                </p>
-                <p>
-                  Akcesoria
-                </p>
-                <p>
-                  Wlazy i zawory
-                </p>
-                <p>
-                  Inne czynnosci
-                </p>
+                </p> -->
               </div>
             </div>
           </div>
@@ -170,36 +159,17 @@
         <div class="w-1/2 p-2">
           <div>
             <div class="flex">
-              <div class="w-1/4">
-                <p>
-                  C01
-                </p>
-                <p>
-                  P01
-                </p>
-                <p>
-                  P10
-                </p>
-                <p>
-                  P40
-                </p>
-              </div>
-              <div class="w-3/4">
-                <p>
-                  Srodek myjacy
-                </p>
-                <p>
-                  Zimna woda
-                </p>
-                <p>
-                  Goraca woda
-                </p>
-                <p>
-                  Parowanie
-                </p>
-                <p>
-                  Suczenie
-                </p>
+              <div class="w-4/4">
+                <!-- <table class="w-full whitespace-nowrap">
+                  <tr v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
+                    <td>
+                      {{ washing_procedure.name }}
+                    </td>
+                  </tr>
+                </table> -->
+                <span v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
+                  {{ washing_procedure.name }},
+                </span>
               </div>
             </div>
           </div>
@@ -211,9 +181,7 @@
             <strong>7 Ostatni produkt / Letze Produkt / Demier Produit Transporte / Previous load
             Nazwa / Nom / Name</strong>
           </p>
-          <p>
-            Hydrowax, Glycerin, Rizinusoel
-          </p>
+          {{ certificate.last_product }}
         </div>
       </div>
       <div class="flex border border-blue-500 border-t-0">
@@ -222,10 +190,7 @@
             <strong>8 Komentarz / Erklarung / Observations / Comments</strong>
           </p>
           <p>
-            Cysterne oplombowano plombami nr
-          </p>
-          <p>
-            A10316441-A10316446
+            Cysterne oplombowano plombami nr: {{ certificate.seals }}
           </p>
         </div>
       </div>
@@ -256,7 +221,7 @@
           </p>
           <br />
           <p>
-            Rudnyk Bogdan
+            <i>{{ certificate.driver[0].first_name }} {{ certificate.driver[0].last_name }}</i>
           </p>
           <p>
             Podpis / Utershift / Signature
@@ -279,7 +244,7 @@ export default {
   },
   data: () => {
     return {
-      image_src: '/assets/logo.jpg',
+      image_src: '/assets/logo.png',
     }
   },
   mounted: () => {},

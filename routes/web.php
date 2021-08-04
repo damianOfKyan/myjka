@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\WashingProcedureController;
+use App\Http\Controllers\WashingRangeController;
+use App\Http\Controllers\DetergentController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\ContractorsController;
 use App\Http\Controllers\CertificatesController;
@@ -188,4 +190,64 @@ Route::delete('washing-procedures/{washingProcedure}', [WashingProcedureControll
 
 Route::put('washing-procedures/{washingProcedure}/restore', [WashingProcedureController::class, 'restore'])
     ->name('washing-procedures.restore')
+    ->middleware('auth');
+
+// WashingRange
+
+Route::get('washing-ranges', [WashingRangeController::class, 'index'])
+    ->name('washing-ranges')
+    ->middleware('auth');
+
+Route::get('washing-ranges/create', [WashingRangeController::class, 'create'])
+    ->name('washing-ranges.create')
+    ->middleware('auth');
+
+Route::post('washing-ranges', [WashingRangeController::class, 'store'])
+    ->name('washing-ranges.store')
+    ->middleware('auth');
+
+Route::get('washing-ranges/{washingRange}/edit', [WashingRangeController::class, 'edit'])
+    ->name('washing-ranges.edit')
+    ->middleware('auth');
+
+Route::put('washing-ranges/{washingRange}', [WashingRangeController::class, 'update'])
+    ->name('washing-ranges.update')
+    ->middleware('auth');
+
+Route::delete('washing-ranges/{washingRange}', [WashingRangeController::class, 'destroy'])
+    ->name('washing-ranges.destroy')
+    ->middleware('auth');
+
+Route::put('washing-ranges/{washingRange}/restore', [WashingRangeController::class, 'restore'])
+    ->name('washing-ranges.restore')
+    ->middleware('auth');
+
+// Detergent
+
+Route::get('detergents', [DetergentController::class, 'index'])
+    ->name('detergents')
+    ->middleware('auth');
+
+Route::get('detergents/create', [DetergentController::class, 'create'])
+    ->name('detergents.create')
+    ->middleware('auth');
+
+Route::post('detergents', [DetergentController::class, 'store'])
+    ->name('detergents.store')
+    ->middleware('auth');
+
+Route::get('detergents/{detergent}/edit', [DetergentController::class, 'edit'])
+    ->name('detergents.edit')
+    ->middleware('auth');
+
+Route::put('detergents/{detergent}', [DetergentController::class, 'update'])
+    ->name('detergents.update')
+    ->middleware('auth');
+
+Route::delete('detergents/{detergent}', [DetergentController::class, 'destroy'])
+    ->name('detergents.destroy')
+    ->middleware('auth');
+
+Route::put('detergents/{detergent}/restore', [DetergentController::class, 'restore'])
+    ->name('detergents.restore')
     ->middleware('auth');

@@ -22,13 +22,12 @@
           <text-input v-model="form.bowser" :error="form.errors.bowser" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.Bowser')" />
           <text-input v-model="form.container" :error="form.errors.container" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.Container')" />
           <text-input v-model="form.last_product" :error="form.errors.last_product" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.LastProduct')" />
-          <number-input v-model="form.washing_range" :error="form.errors.washing_range" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.WashingRange')" />
-          <select-input v-model="form.washing_procedure_id" :error="form.errors.washing_procedure_id" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.WashingProcedure')">
-            <option :value="null" />
-            <option v-for="washingProcedure in certificate.washingProcedures" :key="washingProcedure.id" :value="washingProcedure.id">{{ washingProcedure.name }}</option>
-          </select-input>
-          <number-input v-model="form.detergents" :error="form.errors.detergents" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.Detergents')" />
-          <number-input v-model="form.chamber" :error="form.errors.chamber" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.Chamber')" />
+
+          <multi-select-input v-model="form.washing_range" :options="certificate.washing_ranges" :multiple="true" :close-on-select="true" :error="form.errors.washing_range" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.WashingRange.Self')" />
+          <multi-select-input v-model="form.washing_procedure" :options="certificate.washing_procedures" :multiple="true" :close-on-select="true" :error="form.errors.washing_procedure" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.WashingProcedure.Self')" />
+          <multi-select-input v-model="form.detergent" :options="certificate.detergents" :multiple="true" :close-on-select="true" :error="form.errors.detergents" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Detergent.Self')" />
+
+          <text-input v-model="form.chamber" :error="form.errors.chamber" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.Chamber')" />
           <text-input v-model="form.partitions" :error="form.errors.partitions" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.Partitions')" />
           <text-input v-model="form.seals" :error="form.errors.seals" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Create.Seals')" />
         </div>
@@ -43,9 +42,9 @@
 <script>
 import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
-import NumberInput from '@/Shared/NumberInput'
 import DateInput from '@/Shared/DateTimeInput'
 import SelectInput from '@/Shared/SelectInput'
+import MultiSelectInput from '@/Shared/MultiSelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 
 export default {
@@ -53,8 +52,8 @@ export default {
   components: {
     LoadingButton,
     TextInput,
-    NumberInput,
     SelectInput,
+    MultiSelectInput,
     DateInput,
   },
   layout: Layout,
@@ -73,13 +72,13 @@ export default {
         container: null,
         last_product: null,
         washing_range: null,
-        detergents: null,
+        washing_procedure: null,
+        detergent: null,
         chamber: null,
         partitions: null,
         seals: null,
         contractor_id: null,
         driver_id: null,
-        washing_procedure_id: null,
       }),
     }
   },
