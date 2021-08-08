@@ -11,13 +11,10 @@
     <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
       <form @submit.prevent="update">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+          <single-select-input v-model="form.contact" :options="contractor.contacts" :multiple="true" :close-on-select="true" :error="form.errors.contact_id" class="pr-6 pb-8 w-full" :label="translate('messages.Contractors.Edit.Contractors.Contact')" :selection="'label'" />
           <text-input v-model="form.code" :error="form.errors.code" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Edit.Contractors.Code')" />
           <text-input v-model="form.name" :error="form.errors.name" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Edit.Contractors.Name')" />
           <text-input v-model="form.nip" :error="form.errors.nip" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Edit.Contractors.NIP')" />
-          <select-input v-model="form.contact_id" :error="form.errors.contact_id" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Edit.Contractors.Contact')">
-            <option :value="null" />
-            <option v-for="contact in contractor.contacts" :key="contact.id" :value="contact.id">{{ contact.first_name }} {{ contact.last_name }}</option>
-          </select-input>
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
           <button v-if="!contractor.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">{{ translate('messages.Contractors.Edit.Delete') }}</button>
@@ -68,9 +65,9 @@
 import Icon from '@/Shared/Icon'
 import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
-import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 import TrashedMessage from '@/Shared/TrashedMessage'
+import SingleSelectInput from '@/Shared/SingleSelectInput'
 
 export default {
   metaInfo() {
@@ -79,9 +76,9 @@ export default {
   components: {
     Icon,
     LoadingButton,
-    SelectInput,
     TextInput,
     TrashedMessage,
+    SingleSelectInput,
   },
   layout: Layout,
   props: {
@@ -95,7 +92,7 @@ export default {
         name: this.contractor.name,
         nip: this.contractor.nip,
         contact_id: this.contractor.contact_id,
-        contact: this.contractor.contact,
+        contact: this.contractor.contact[0],
       }),
     }
   },

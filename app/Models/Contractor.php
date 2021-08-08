@@ -11,6 +11,13 @@ class Contractor extends Model
     use HasFactory;
     use SoftDeletes;
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['label'];
+
     public function resolveRouteBinding($value, $field = null)
     {
         return $this->where($field ?? 'id', $value)->withTrashed()->firstOrFail();
@@ -19,6 +26,21 @@ class Contractor extends Model
     public function contact()
     {
         return $this->belongsTo(Contact::class);
+    }
+
+    /**
+     * Get the Contractor's label.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getLabelAttribute()
+    {
+        return implode(' - ', [
+            $this->code,
+            $this->name,
+            $this->nip
+        ]);
     }
 
     public function scopeFilter($query, array $filters)

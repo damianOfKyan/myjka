@@ -7,225 +7,232 @@
     </h1>
     <button class="text-white btn-indigo ml-auto hover:underline mb-8" tabindex="-1" type="button" @click="generatePdf">{{ translate('messages.GeneratePDF') }}</button>
 
-    <div id="pdf-generate" class="max-w-screen-md m-auto p-2 text-sm bg-white mt-2">
-      <div class="flex">
-        <div class="w-1/2 pb-2 pl-2"><img :src="image_src" width="35%" height="35%" /></div>
-        <div class="w-1/2 text-center text-white bg-blue-500 text-lg">
-          <h1 class="bg-blue-500">Certyfikat Czystości</h1>
-          <h2>Cleaning Document</h2>
+    <div id="pdf-generate-wrapper">
+      <img id="watermark" :src="watermark_src" width="60%" height="60%" />
+      <div id="pdf-generate" class="max-w-screen-md m-auto p-2 text-sm bg-white mt-2">
+        <div class="flex">
+          <div class="w-1/2 pb-2 pl-2"><img :src="image_src" width="35%" height="35%" /></div>
+          <div class="w-1/2 text-center text-white bg-blue-500 text-lg">
+            <h1 class="bg-blue-500">Certyfikat Czystości</h1>
+            <h2>Cleaning Document</h2>
+          </div>
         </div>
-      </div>
-      <div class="flex">
-        <div class="w-full border border-blue-500">
-          <div class="flex">
-            <div class="w-3/5 p-2">
-              <p>
-                Myjnia Cystern Samochodowych
-              </p>
-              <p>
-                TANKWAGEN WASCHANLAGE
-                <br />
-                LA STATION DE LAVAGE
-                <br />
-                CLEANING STATION
-              </p>
-            </div>
-            <div class="w-2/5 p-2">
-              <p>
-                MRC Carchem II Ćwiklik Piotr
-                <br />
-                ul. Gospodarcza 3
-                <br />
-                68-200 Żary, Polska
-                <br />
-                NIP - PL9930070175
-                <br />
-                kontakt: tel. 0048 503 178 886,
-                <br />
-                e-mail: piotrcarchem@op.pl
-              </p>
+        <div class="flex">
+          <div class="w-full border border-blue-500">
+            <div class="flex">
+              <div class="w-3/5 p-2">
+                <p>
+                  Myjnia Cystern Samochodowych
+                </p>
+                <p>
+                  TANKWAGEN WASCHANLAGE
+                  <br />
+                  LA STATION DE LAVAGE
+                  <br />
+                  CLEANING STATION
+                </p>
+              </div>
+              <div class="w-2/5 p-2">
+                <p>
+                  MRC Carchem II Ćwiklik Piotr
+                  <br />
+                  ul. Gospodarcza 3
+                  <br />
+                  68-200 Żary, Polska
+                  <br />
+                  NIP - PL9930070175
+                  <br />
+                  kontakt: tel. 0048 503 178 886,
+                  <br />
+                  e-mail: piotrcarchem@op.pl
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-1/2 p-2">
-          <p>
-            <strong>1 Wjazd/Einfahrt/Arrival:</strong> {{ certificate.date_of_arrival }}
-          </p>
-          <p>
-            <strong>Wyjazd/Klant/Departure:</strong> {{ certificate.date_of_departure }}
-          </p>
+        <div class="flex border border-blue-500 border-t-0">
+          <div class="w-1/2 p-2">
+            <p>
+              <strong>1 Wjazd/Einfahrt/Arrival:</strong> {{ certificate.date_of_arrival }}
+            </p>
+            <p>
+              <strong>Wyjazd/Klant/Departure:</strong> {{ certificate.date_of_departure }}
+            </p>
+          </div>
+          <div class="w-1/2 p-2">
+            <p>
+              <strong>2 Seria / Serien-Nummer / Serial Number</strong>
+            </p>
+            <p>
+              {{ certificate.series }}
+            </p>
+          </div>
         </div>
-        <div class="w-1/2 p-2">
-          <p>
-            <strong>2 Seria / Serien-Nummer / Serial Number</strong>
-          </p>
-          <p>
-            {{ certificate.series }}
-          </p>
+        <div class="flex border border-blue-500 border-t-0">
+          <div class="w-1/2 p-2">
+            <p>
+              <strong>3 Nazwa Firmy / Klant / Client / Customer</strong>
+            </p>
+            <p>
+              {{ certificate.contractor.name }}
+              <br />
+              {{ certificate.contractor.address }}
+              <br />
+              {{ certificate.contractor.postal_code }}
+              <br />
+              {{ certificate.contractor.city }}
+              <br />
+              {{ certificate.contractor.country }}
+              <br />
+              NIP: {{ certificate.contractor.nip }}
+            </p>
+          </div>
+          <div class="w-1/2 p-2">
+            <p>
+              <strong>4 Numer Identifikacyjny / Identificatiner / NO d'identification / Identification Number</strong>
+              <br />
+              <strong>Pojazd / Fahrzeug / Vehicule / Vehicle</strong>
+            </p>
+            <p>
+              {{ certificate.tractor }}
+            </p>
+            <br />
+            <p>
+              <strong>
+                Cysterna, Tank-kontener / Tankwagen,
+                <br />
+                Tank-kontener / Cisterne, Conteneur / Tank, Container
+              </strong>
+            </p>
+            <p>
+              {{ certificate.bowser }}
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-1/2 p-2">
-          <p>
-            <strong>3 Nazwa Firmy / Klant / Client / Customer</strong>
-          </p>
-          <p>
-            {{ certificate.contractor.name }}
-            <br />
-            {{ certificate.contractor.address }}
-            <br />
-            {{ certificate.contractor.postal_code }}
-            <br />
-            {{ certificate.contractor.city }}
-            <br />
-            {{ certificate.contractor.country }}
-            <br />
-            NIP: {{ certificate.contractor.nip }}
-          </p>
+        <div class="flex border border-blue-500 border-t-0">
+          <div class="w-1/2 p-2">
+            <p>
+              <strong>5 Zakres Mycia / Waschen Bereich / Prestations complementaires / Additional Service</strong>
+            </p>
+            <p>
+              <strong>EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</strong>
+            </p>
+          </div>
+          <div class="w-1/2 p-2">
+            <p>
+              <strong>6 Procedura Mycia / Prozedur Bereich / Procedures de lavage / Cleaning Procedures</strong>
+            </p>
+            <p>
+              <strong>EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</strong>
+            </p>
+          </div>
         </div>
-        <div class="w-1/2 p-2">
-          <p>
-            <strong>4 Numer Identifikacyjny / Identificatiner / NO d'identification / Identification Number</strong>
-            <br />
-            <strong>Pojazd / Fahrzeug / Vehicule / Vehicle</strong>
-          </p>
-          <p>
-            {{ certificate.tractor }}
-          </p>
-          <br />
-          <p>
-            <strong>Cysterna, Tank-kontener / Tankwagen, Tank-kontener / Cisterne, Conteneur / Tank, Container</strong>
-          </p>
-          <p>
-            {{ certificate.bowser }}
-          </p>
-        </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-1/2 p-2">
-          <p>
-            <strong>5 Zakres Mycia / Waschen Bereich / Prestations complementaires / Additional Service</strong>
-          </p>
-          <p>
-            <strong>EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</strong>
-          </p>
-        </div>
-        <div class="w-1/2 p-2">
-          <p>
-            <strong>6 Procedura Mycia / Prozedur Bereich / Procedures de lavage / Cleaning Procedures</strong>
-          </p>
-          <p>
-            <strong>EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</strong>
-          </p>
-        </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-1/2 p-2">
-          <div>
-            <div class="flex">
-              <div class="w-4/4">
-                <span v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
-                  {{ washing_procedure.name }},
-                </span>
-                <!-- <table class="w-full whitespace-nowrap">
-                  <tr v-for="washing_range in certificate.washing_ranges" :key="washing_range.id">
-                    <td>
-                      {{ washing_range.name }}
-                    </td>
-                  </tr>
-                </table> -->
-                <!-- {{ certificate.washing_range }} -->
-                <!-- {{ certificate.washing_procedure_id }}
-                {{ certificate.washing_procedures }} -->
+        <div class="flex border border-blue-500 border-t-0">
+          <div class="w-1/2 p-2">
+            <div>
+              <div class="flex">
+                <div class="w-4/4">
+                  <span v-for="washing_range in certificate.washing_ranges" :key="washing_range.id">
+                    {{ washing_range.name }},
+                  </span>
+                  <!-- <table class="w-full whitespace-nowrap">
+                    <tr v-for="washing_range in certificate.washing_ranges" :key="washing_range.id">
+                      <td>
+                        {{ washing_range.name }}
+                      </td>
+                    </tr>
+                  </table> -->
+                  <!-- {{ certificate.washing_range }} -->
+                  <!-- {{ certificate.washing_procedure_id }}
+                  {{ certificate.washing_procedures }} -->
 
-                <!-- <p>
-                  E50
-                </p>
-                <p>
-                  E55
-                </p>
-                <p>
-                  E01
-                </p>
-                <p>
-                  E99
-                </p> -->
+                  <!-- <p>
+                    E50
+                  </p>
+                  <p>
+                    E55
+                  </p>
+                  <p>
+                    E01
+                  </p>
+                  <p>
+                    E99
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2 p-2">
+            <div>
+              <div class="flex">
+                <div class="w-4/4">
+                  <!-- <table class="w-full whitespace-nowrap">
+                    <tr v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
+                      <td>
+                        {{ washing_procedure.name }}
+                      </td>
+                    </tr>
+                  </table> -->
+                  <span v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
+                    {{ washing_procedure.name }},
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="w-1/2 p-2">
-          <div>
-            <div class="flex">
-              <div class="w-4/4">
-                <!-- <table class="w-full whitespace-nowrap">
-                  <tr v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
-                    <td>
-                      {{ washing_procedure.name }}
-                    </td>
-                  </tr>
-                </table> -->
-                <span v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
-                  {{ washing_procedure.name }},
-                </span>
-              </div>
-            </div>
+        <div class="flex border border-blue-500 border-t-0">
+          <div class="w-full p-2">
+            <p>
+              <strong>7 Ostatni produkt / Letze Produkt / Demier Produit Transporte / Previous load
+              Nazwa / Nom / Name</strong>
+            </p>
+            {{ certificate.last_product }}
           </div>
         </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-full p-2">
-          <p>
-            <strong>7 Ostatni produkt / Letze Produkt / Demier Produit Transporte / Previous load
-            Nazwa / Nom / Name</strong>
-          </p>
-          {{ certificate.last_product }}
+        <div class="flex border border-blue-500 border-t-0">
+          <div class="w-full p-2">
+            <p>
+              <strong>8 Komentarz / Erklarung / Observations / Comments</strong>
+            </p>
+            <p>
+              Cysterne oplombowano plombami nr: {{ certificate.seals }}
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-full p-2">
-          <p>
-            <strong>8 Komentarz / Erklarung / Observations / Comments</strong>
-          </p>
-          <p>
-            Cysterne oplombowano plombami nr: {{ certificate.seals }}
-          </p>
+        <div class="flex border border-blue-500 border-t-0">
+          <div class="w-full p-2">
+            <p>
+              <strong>9 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</strong>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-full p-2">
-          <p>
-            <strong>9 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</strong>
-          </p>
-        </div>
-      </div>
-      <div class="flex border border-blue-500 border-t-0">
-        <div class="w-1/2 p-2">
-          <p>
-            <strong>10 Pieczatka / Stamp / Stempel</strong>
+        <div class="flex border border-blue-500 border-t-0">
+          <div class="w-1/2 p-2">
+            <p>
+              <strong>10 Pieczatka / Stamp / Stempel</strong>
+              <br />
+              Nazwisko imie name / Nom
+            </p>
             <br />
-            Nazwisko imie name / Nom
-          </p>
-          <br />
-          <p>
-            Podpis / Utershift / Signature
-          </p>
-        </div>
-        <div class="w-1/2 p-2">
-          <p>
-            <strong>11 Kierowca / Fahrer / Conducteur / Driver</strong>
+            <p>
+              Podpis / Utershift / Signature
+            </p>
+          </div>
+          <div class="w-1/2 p-2">
+            <p>
+              <strong>11 Kierowca / Fahrer / Conducteur / Driver</strong>
+              <br />
+              Nazwisko imie / Name / Nom
+            </p>
             <br />
-            Nazwisko imie / Name / Nom
-          </p>
-          <br />
-          <p>
-            <i>{{ certificate.driver[0].first_name }} {{ certificate.driver[0].last_name }}</i>
-          </p>
-          <p>
-            Podpis / Utershift / Signature
-          </p>
+            <p>
+              <i>{{ certificate.driver[0].first_name }} {{ certificate.driver[0].last_name }}</i>
+            </p>
+            <p>
+              Podpis / Utershift / Signature
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -245,12 +252,13 @@ export default {
   data: () => {
     return {
       image_src: '/assets/logo.png',
+      watermark_src: '/assets/logo_grey.png',
     }
   },
   mounted: () => {},
   methods: {
     generatePdf() {
-      var element = document.getElementById('pdf-generate')
+      var element = document.getElementById('pdf-generate-wrapper')
       const opt = {
         // margin: 0,
         filename: 'myfile.pdf',

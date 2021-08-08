@@ -39,8 +39,8 @@ class ContactsController extends Controller
     {
         Contact::create(
             Request::validate([
-                'first_name' => ['required', 'max:50'],
-                'last_name' => ['required', 'max:50'],
+                'first_name' => ['nullable', 'max:50'],
+                'last_name' => ['nullable', 'max:50'],
                 'email' => ['nullable', 'max:50', 'email'],
                 'phone' => ['nullable', 'max:50'],
                 'address' => ['nullable', 'max:150'],
@@ -75,8 +75,8 @@ class ContactsController extends Controller
     {
         $contact->update(
             Request::validate([
-                'first_name' => ['required', 'max:50'],
-                'last_name' => ['required', 'max:50'],
+                'first_name' => ['nullable', 'max:50'],
+                'last_name' => ['nullable', 'max:50'],
                 'email' => ['nullable', 'max:50', 'email'],
                 'phone' => ['nullable', 'max:50'],
                 'address' => ['nullable', 'max:150'],

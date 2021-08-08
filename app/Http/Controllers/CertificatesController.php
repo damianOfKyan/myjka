@@ -62,17 +62,22 @@ class CertificatesController extends Controller
 
     public function create()
     {
+        $drivers = Contact::where('first_name', '<>', 'NULL')->orWhere('last_name', '<>', 'NULL')->get()->map->only(
+            'id',
+            'first_name',
+            'last_name',
+            'label', // accessor
+            'name', // accessor
+        );
+
         return Inertia::render('Certificates/Create', [
             'certificate' => [
-                'drivers' => Contact::orderBy('first_name')->get()->map->only(
-                    'id',
-                    'first_name',
-                    'last_name'
-                ),
+                'drivers' => $drivers,
                 'contractors' => Contractor::orderBy('name')->get()->map->only(
                     'id',
                     'name',
-                    'code'
+                    'code',
+                    'label', // accessor
                 ),
                 'washing_procedures' => WashingProcedure::orderBy('name')->get()->map->only('id', 'name'),
                 'washing_ranges' => WashingRange::orderBy('name')->get()->map->only('id', 'name'),
@@ -83,22 +88,31 @@ class CertificatesController extends Controller
 
     public function store()
     {
-        $certificate = Certificate::create(
-            Request::validate([
-                'series' => ['required', 'max: 10'],
-                'date_of_arrival' => ['required', 'max: 100'],
-                'date_of_departure' => ['required', 'max: 100'],
-                'tractor' => ['nullable', 'max: 20'],
-                'bowser' => ['nullable', 'max: 20'],
-                'container' => ['nullable', 'max: 20'],
-                'last_product' => ['nullable', 'max: 100'],
-                'chamber' => ['nullable', 'max: 255'],
-                'partitions' => ['nullable', 'max: 255'],
-                'seals' => ['nullable', 'max: 255'],
-                'driver_id' => ['required', 'exists:contacts,id'],
-                'contractor_id' => ['required', 'exists:contractors,id'],
-            ])
-        );
+        $validated = Request::validate([
+            'series' => ['required', 'max: 10'],
+            'date_of_arrival' => ['required', 'max: 100'],
+            'date_of_departure' => ['required', 'max: 100'],
+            'tractor' => ['nullable', 'max: 20'],
+            'bowser' => ['nullable', 'max: 20'],
+            'container' => ['nullable', 'max: 20'],
+            'last_product' => ['nullable', 'max: 100'],
+            'chamber' => ['nullable', 'max: 255'],
+            'partitions' => ['nullable', 'max: 255'],
+            'seals' => ['nullable', 'max: 255'],
+            'driver.id' => ['required', 'exists:contacts,id'],
+            'contractor.id' => ['required', 'exists:contractors,id'],
+            'washing_procedure.id' => ['nullable', 'exists:washing_procedure,id'],
+            'detergent.id' => ['nullable', 'exists:detergent,id'],
+            'washing_range.id' => ['nullable', 'exists:washing_range,id'],
+        ]);
+
+        $newArr = $validated;
+        $newArr['driver_id'] = $validated['driver']['id'];
+        $newArr['contractor_id'] = $validated['contractor']['id'];
+        unset($newArr['driver']);
+        unset($newArr['contractor']);
+
+        $certificate = Certificate::create($newArr);
 
         if ($certificate) {
             $washingProcedure = collect(Request::input('washing_procedure'));
@@ -120,6 +134,7 @@ class CertificatesController extends Controller
             $certificate->contractor()->get()->map->only(
                 'id',
                 'nip',
+                'label', // accessor
                 'name',
                 'code',
                 'contact_id'
@@ -127,9 +142,23 @@ class CertificatesController extends Controller
             +
             $certificate->contractor->contact()->get()->map->only(
                 'email',
-                'phone'
+                'phone',
+                'label'
             )->first()
         ];
+
+        $drivers = Contact::where('first_name', '<>', 'NULL')->orWhere('last_name', '<>', 'NULL')->get()->map->only(
+            'id',
+            'first_name',
+            'last_name',
+            'label', // accessor
+            'name', // accessor
+            'phone',
+            'address',
+            'postal_code',
+            'city',
+            'country'
+        );
 
         return Inertia::render('Certificates/Edit', [
             'certificate' => [
@@ -150,7 +179,7 @@ class CertificatesController extends Controller
                 'seals' => $certificate->seals,
                 'deleted_at' => $certificate->deleted_at,
                 'contacts' => Contact::orderBy('first_name')->get(),
-                'contractors' => Contractor::orderBy('code')->get()->map->only('id', 'code', 'name'),
+                'contractors' => Contractor::orderBy('code')->get()->map->only('id', 'code', 'name', 'label'),
                 'washing_procedures' => WashingProcedure::orderBy('name')->get()->map->only('id', 'name'),
                 'washing_procedure' => $certificate->washingProcedure()->get()->map->only(
                     'id',
@@ -175,9 +204,12 @@ class CertificatesController extends Controller
                     'id',
                     'first_name',
                     'last_name',
+                    'label', // accessor
+                    'name', // accessor
                     'phone',
                     'email'
                 ),
+                'drivers' => $drivers,
                 'contractor' => $contractor,
             ],
         ]);
@@ -185,22 +217,28 @@ class CertificatesController extends Controller
 
     public function update(Certificate $certificate)
     {
-        $certificate->update(
-            Request::validate([
-                'series' => ['nullable', 'max: 10'],
-                'date_of_arrival' => ['nullable', 'max: 100'],
-                'date_of_departure' => ['nullable', 'max: 100'],
-                'tractor' => ['nullable', 'max: 20'],
-                'bowser' => ['nullable', 'max: 20'],
-                'container' => ['nullable', 'max: 20'],
-                'last_product' => ['nullable', 'max: 100'],
-                'chamber' => ['nullable', 'max: 255'],
-                'partitions' => ['nullable', 'max: 255'],
-                'seals' => ['nullable', 'max: 255'],
-                'driver_id' => ['required', 'exists:contacts,id'],
-                'contractor_id' => ['required', 'exists:contractors,id'],
-            ])
-        );
+        $validated = Request::validate([
+            'series' => ['nullable', 'max: 10'],
+            'date_of_arrival' => ['nullable', 'max: 100'],
+            'date_of_departure' => ['nullable', 'max: 100'],
+            'tractor' => ['nullable', 'max: 20'],
+            'bowser' => ['nullable', 'max: 20'],
+            'container' => ['nullable', 'max: 20'],
+            'last_product' => ['nullable', 'max: 100'],
+            'chamber' => ['nullable', 'max: 255'],
+            'partitions' => ['nullable', 'max: 255'],
+            'seals' => ['nullable', 'max: 255'],
+            'driver.id' => ['required', 'exists:contacts,id'],
+            'contractor.id' => ['required', 'exists:contractors,id'],
+        ]);
+
+        $newArr = $validated;
+        $newArr['driver_id'] = $validated['driver']['id'];
+        $newArr['contractor_id'] = $validated['contractor']['id'];
+        unset($newArr['driver']);
+        unset($newArr['contractor']);
+
+        $certificate->update($newArr);
 
         $washingProcedure = collect(Request::input('washing_procedure'));
         $certificate->washingProcedure()->sync($washingProcedure->pluck('id'));

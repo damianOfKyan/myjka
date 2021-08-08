@@ -11,6 +11,13 @@ class Contact extends Model
     use HasFactory;
     use SoftDeletes;
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['label', 'name'];
+
     public function contractor()
     {
         return $this->hasOne(Contractor::class);
@@ -34,6 +41,22 @@ class Contact extends Model
     public function getNameAttribute()
     {
         return $this->first_name.' '.$this->last_name;
+    }
+
+    /**
+     * Get the Contractor's label.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getLabelAttribute()
+    {
+        return implode(' ', [
+            $this->phone,
+            $this->address,
+            $this->postal_code,
+            $this->city,
+        ]);
     }
 
     public function scopeOrderByName($query)

@@ -10,10 +10,11 @@
           <text-input v-model="form.name" :error="form.errors.name" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Create.Contractors.Name')" />
           <text-input v-model="form.code" :error="form.errors.code" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Create.Contractors.Code')" />
           <text-input v-model="form.nip" :error="form.errors.nip" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Create.Contractors.NIP')" />
-          <select-input v-model="form.contact_id" :error="form.errors.contact_id" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Create.Contractors.Contact')">
+          <!-- <select-input v-model="form.contact_id" :error="form.errors.contact_id" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Create.Contractors.Contact')">
             <option :value="null" />
             <option v-for="contact in contractor.contacts" :key="contact.id" :value="contact.id">{{ contact.first_name }} {{ contact.last_name }}</option>
-          </select-input>
+          </select-input> -->
+          <single-select-input v-model="form.contact" :options="form.contacts" :multiple="false" :close-on-select="true" :error="form.errors.contact_id" class="pr-6 pb-8 w-full" :label="translate('messages.Contractors.Create.Contractors.Contact')" :selection="'label'" />
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-end items-center">
           <loading-button :loading="form.processing" class="btn-indigo" type="submit">{{ translate('messages.Save') }}</loading-button>
@@ -26,15 +27,15 @@
 <script>
 import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
-import SelectInput from '@/Shared/SelectInput'
+import SingleSelectInput from '@/Shared/SingleSelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 
 export default {
   metaInfo: { title: 'Create Contractor' },
   components: {
     LoadingButton,
-    SelectInput,
     TextInput,
+    SingleSelectInput,
   },
   layout: Layout,
   props: {
@@ -47,7 +48,8 @@ export default {
         name: null,
         code: null,
         nip: null,
-        contact_id: null,
+        contact: null,
+        contacts: this.contractor.contacts,
       }),
     }
   },

@@ -31,32 +31,61 @@ class ContractorsController extends Controller
 
     public function create()
     {
+        $contacts = Contact::get()->map->only(
+            'id',
+            'first_name',
+            'last_name',
+            'label', // accessor
+            'name', // accessor
+            'phone',
+            'address',
+            'postal_code',
+            'city',
+            'country'
+        );
+
         return Inertia::render('Contractors/Create', [
             'contractor' => [
-                'contacts' => Contact::all(),
+                'contacts' => $contacts,
             ]
         ]);
     }
 
     public function store()
     {
-        Contractor::create(
-            Request::validate([
-                'code' => ['required', 'max:50'],
-                'name' => ['required', 'max:100'],
-                'nip' => ['required', 'max:20'],
-                'contact_id' => [
-                    'required',
-                    'exists:contacts,id'
-                ],
-            ])
-        );
+        $contact = collect(Request::input('contact'));
+
+        $validated = Request::validate([
+            'code' => ['required', 'max:50'],
+            'name' => ['required', 'max:100'],
+            'nip' => ['required', 'max:20'],
+            'contact.id' => ['required', 'exists:contacts,id'],
+        ]);
+
+        $newArr = $validated;
+        $newArr['contact_id'] = $validated['contact']['id'];
+        unset($newArr['contact']);
+
+        Contractor::create($newArr);
 
         return Redirect::route('contractors')->with('success', __('messages.Created'));
     }
 
     public function edit(Contractor $contractor)
     {
+        $contacts = Contact::get()->map->only(
+            'id',
+            'first_name',
+            'last_name',
+            'label', // accessor
+            'name', // accessor
+            'phone',
+            'address',
+            'postal_code',
+            'city',
+            'country'
+        );
+
         return Inertia::render('Contractors/Edit', [
             'contractor' => [
                 'id' => $contractor->id,
@@ -65,14 +94,18 @@ class ContractorsController extends Controller
                 'nip' => $contractor->nip,
                 'deleted_at' => $contractor->deleted_at,
                 'contact_id' => $contractor->contact_id,
-                'contacts' => Contact::all(),
+                'contacts' => $contacts,
                 'contact' => $contractor->contact()->get()->map->only(
                     'id',
-                    'name',
                     'first_name',
                     'last_name',
+                    'label', // accessor
+                    'name', // accessor
+                    'phone',
+                    'address',
+                    'postal_code',
                     'city',
-                    'phone'
+                    'country'
                 ),
             ],
         ]);
@@ -80,17 +113,19 @@ class ContractorsController extends Controller
 
     public function update(Contractor $contractor)
     {
-        $contractor->update(
-            Request::validate([
-                'code' => ['required', 'max:50'],
-                'name' => ['nullable', 'max:100'],
-                'nip' => ['required', 'max:20'],
-                'contact_id' => [
-                    'nullable',
-                    'exists:contacts,id'
-                ],
-            ]),
-        );
+        $contact = collect(Request::input('contact'));
+
+        $validated = Request::validate([
+            'code' => ['required', 'max:50'],
+            'name' => ['nullable', 'max:100'],
+            'nip' => ['required', 'max:20'],
+            'contact.id' => ['required', 'exists:contacts,id'],
+        ]);
+
+        $newArr = $validated;
+        $newArr['contact_id'] = $validated['contact']['id'];
+        unset($newArr['contact']);
+        $contractor->update($newArr);
 
         return Redirect::back()->with('success', __('messages.Updated'));
     }

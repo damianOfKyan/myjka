@@ -1,9 +1,7 @@
 <template>
   <div>
     <label v-if="label" class="form-label" :for="id">{{ label }}:</label>
-    <multiselect v-model="selected" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" :placeholder="translate('messages.PickSome')" label="name" track-by="name" :preselect-first="false">
-      <template slot="selection" />
-    </multiselect>
+    <multiselect v-model="selected" :options="options" :multiple="false" :close-on-select="false" :clear-on-select="false" :preserve-search="true" :placeholder="translate('messages.PickSome')" :label="selection" track-by="id" :preselect-first="false" :max-height="150" />
     <div v-if="error" class="form-error">{{ error }}</div>
   </div>
 </template>
@@ -17,10 +15,10 @@ export default {
     id: {
       type: Array,
       default() {
-        return [`multi-select-input-${this._uid}`]
+        return [`single-select-input-${this._uid}`]
       },
     },
-    value: [Array],
+    value: [Number, Array, Object],
     label: String,
     error: String,
   },
@@ -28,6 +26,7 @@ export default {
     return {
       selected: this.value,
       options: this.$attrs.options,
+      selection: this.$attrs.selection,
     }
   },
   watch: {

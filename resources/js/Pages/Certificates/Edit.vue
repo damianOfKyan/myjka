@@ -13,15 +13,9 @@
       <form @submit.prevent="update">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
           <text-input v-model="form.series" :error="form.errors.series" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Series')" />
-          <select-input v-model="form.driver_id" :error="form.errors.driver_id" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Driver.Self')">
-            <option :value="null" />
-            <option v-for="contact in certificate.contacts" :key="contact.id" :value="contact.id">{{ contact.first_name }} {{ contact.last_name }}</option>
-          </select-input>
+          <single-select-input v-model="form.driver" :options="certificate.drivers" :multiple="false" :close-on-select="true" :error="form.errors.driver" class="pr-6 pb-8 w-full" :label="translate('messages.Certificates.Edit.Driver.Self')" :selection="'name'" />
+          <single-select-input v-model="form.contractor" :options="certificate.contractors" :multiple="false" :close-on-select="true" :error="form.errors.contractor" class="pr-6 pb-8 w-full" :label="translate('messages.Certificates.Edit.Contractor.Self')" :selection="'label'" />
           <date-input v-model="form.date_of_arrival" :error="form.errors.date_of_arrival" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.DateOfArrival')" />
-          <select-input v-model="form.contractor_id" :error="form.errors.contractor_id" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Contractor.Self')">
-            <option :value="null" />
-            <option v-for="contact in certificate.contractors" :key="contact.id" :value="contact.id">{{ contact.code }} - {{ contact.name }}</option>
-          </select-input>
           <date-input v-model="form.date_of_departure" :error="form.errors.date_of_departure" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.DateOfDeparture')" />
           <text-input v-model="form.tractor" :error="form.errors.tractor" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Tractor')" />
           <text-input v-model="form.bowser" :error="form.errors.bowser" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Certificates.Edit.Bowser')" />
@@ -225,11 +219,11 @@
 import Icon from '@/Shared/Icon'
 import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
-import SelectInput from '@/Shared/SelectInput'
 import MultiSelectInput from '@/Shared/MultiSelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 import TrashedMessage from '@/Shared/TrashedMessage'
 import DateInput from '@/Shared/DateTimeInput'
+import SingleSelectInput from '@/Shared/SingleSelectInput'
 
 export default {
   metaInfo() {
@@ -238,11 +232,11 @@ export default {
   components: {
     Icon,
     LoadingButton,
-    SelectInput,
     MultiSelectInput,
     TextInput,
     TrashedMessage,
     DateInput,
+    SingleSelectInput,
   },
   layout: Layout,
   props: {
@@ -266,8 +260,9 @@ export default {
         chamber: this.certificate.chamber,
         partitions: this.certificate.partitions,
         seals: this.certificate.seals,
-        contractor_id: this.certificate.contractor_id,
-        driver_id: this.certificate.driver_id,
+        contractor_id: this.certificate.contractor[0].id,
+        contractor: this.certificate.contractor[0],
+        driver: this.certificate.driver[0],
       }),
     }
   },

@@ -31,6 +31,8 @@ return [
                 'Name' => 'Nazwa',
                 'NIP' => 'NIP',
                 'Contact' => 'Kontakt',
+                'Phone' => 'T',
+                'PostalCode' => 'KP'
             ],
             'Contractor' => 'Kontrahent',
             'CreateContractor' => 'Kontrahenta',

@@ -9,3 +9,21 @@
 
 /* Utilities */
 @import 'tailwindcss/utilities';
+
+
+#watermark {
+  position: relative;
+  top: 600px;
+  left: 150px;
+  z-index: 1;
+}
+
+#pdf-generate {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+#pdf-generate-wrapper {
+  margin-top: -230px;
+}
