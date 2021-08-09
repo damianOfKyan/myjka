@@ -13,8 +13,8 @@
 
 #watermark {
   position: relative;
-  top: 600px;
-  left: 150px;
+  top: 500px;
+  left: 250px;
   z-index: 1;
 }
 
@@ -25,5 +25,5 @@
 }
 
 #pdf-generate-wrapper {
-  margin-top: -230px;
+  margin-top: -150px;
 }

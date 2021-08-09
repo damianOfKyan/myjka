@@ -8,7 +8,7 @@
     <button class="text-white btn-indigo ml-auto hover:underline mb-8" tabindex="-1" type="button" @click="generatePdf">{{ translate('messages.GeneratePDF') }}</button>
 
     <div id="pdf-generate-wrapper">
-      <img id="watermark" :src="watermark_src" width="60%" height="60%" />
+      <img id="watermark" :src="watermark_src" width="30%" height="30%" />
       <div id="pdf-generate" class="max-w-screen-md m-auto p-2 text-sm bg-white mt-2">
         <div class="flex">
           <div class="w-1/2 pb-2 pl-2"><img :src="image_src" width="35%" height="35%" /></div>
@@ -240,11 +240,11 @@
 </template>
 
 <script>
-import Layout from '@/Shared/Layout'
+import PrintLayout from '@/Shared/PrintLayout'
 import * as html2pdf from 'html2pdf.js'
 
 export default {
-  layout: Layout,
+  layout: PrintLayout,
   props: {
     certificate: Object,
     logo: Object,
