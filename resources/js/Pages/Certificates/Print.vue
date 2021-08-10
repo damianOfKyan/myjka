@@ -233,6 +233,8 @@
               Nazwisko imie name / Nom
             </p>
             <br />
+            <br />
+            <br />
             <p>
               Podpis / Utershift / Signature
             </p>
@@ -243,6 +245,8 @@
               <br />
               Nazwisko imie / Name / Nom
             </p>
+            <br />
+            <br />
             <br />
             <p>
               <i>{{ certificate.driver[0].first_name }} {{ certificate.driver[0].last_name }}</i>
