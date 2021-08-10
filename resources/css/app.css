@@ -22,8 +22,10 @@
   position: relative;
   z-index: 2;
   background: transparent;
+  max-width: 770px;
 }
 
 #pdf-generate-wrapper {
   margin-top: -150px;
+  margin-left: -10px;
 }

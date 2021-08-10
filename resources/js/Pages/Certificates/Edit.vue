@@ -34,6 +34,9 @@
           <inertia-link class="px-6 py-4 flex text-green-700 items-center hover:underline" :href="route('certificates.print', certificate.id)" tabindex="-1">
             {{ translate('messages.Certificates.Edit.Print') }}
           </inertia-link>
+          <inertia-link class="px-6 py-4 flex text-orange-700 items-center hover:underline" :href="route('certificates.clone', certificate.id)" tabindex="-1">
+            {{ translate('messages.Certificates.Edit.Clone') }}
+          </inertia-link>
           <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">{{ translate('messages.Save') }}</loading-button>
         </div>
       </form>

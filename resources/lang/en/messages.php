@@ -119,6 +119,7 @@ return [
             'Deleted' => 'Ten Certyfikat został usunięty.',
             'Delete' => 'Usuń Certyfikat',
             'Print' => 'Wydrukuj Certyfikat',
+            'Clone' => 'Sklonuj Certyfikat',
             'Contractor' => [
                 'Self' => 'Kontrahent',
                 'Code' => 'Kod',

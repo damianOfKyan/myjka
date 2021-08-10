@@ -266,6 +266,13 @@ class CertificatesController extends Controller
         return Redirect::back()->with('success', __('messages.Restored'));
     }
 
+    public function clone(Certificate $certificate)
+    {
+        $clone = $certificate->replicateRecord();
+
+        return Redirect::route('certificates.edit', $clone->id)->with('success', __('messages.Created'));
+    }
+
     public function print(Certificate $certificate)
     {
         $contractor = (
@@ -313,7 +320,11 @@ class CertificatesController extends Controller
                     'name',
                     'description'
                 ),
-                'detergents' => $certificate->detergents,
+                'detergents' => $certificate->detergent()->get()->map->only(
+                    'id',
+                    'name',
+                    'description'
+                ),
                 'chamber' => $certificate->chamber,
                 'partitions' => $certificate->partitions,
                 'seals' => $certificate->seals,
