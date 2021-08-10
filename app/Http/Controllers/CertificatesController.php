@@ -21,7 +21,7 @@ class CertificatesController extends Controller
     {
         return Inertia::render('Certificates/Index', [
             'filters' => Request::all('search', 'trashed'),
-            'certificates' => Certificate::orderBy('series')
+            'certificates' => Certificate::orderBy('updated_at', 'desc')
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate(10)
                 ->withQueryString()
