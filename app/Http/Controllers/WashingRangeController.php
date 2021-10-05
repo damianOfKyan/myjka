@@ -17,7 +17,7 @@ class WashingRangeController extends Controller
             'filters' => Request::all('search', 'trashed'),
             'washingRanges' => WashingRange::orderByName()
                 ->filter(Request::only('search', 'trashed'))
-                ->paginate(10)
+                ->paginate(30)
                 ->withQueryString()
                 ->through(fn ($wp) => [
                     'id' => $wp->id,

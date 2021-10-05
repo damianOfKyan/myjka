@@ -20,7 +20,7 @@
         <div class="flex">
           <div class="w-full border border-blue-500 font-bold">
             <div class="flex">
-              <div class="w-3/5 px-2">
+              <div class="w-1/2 border border-blue-500 px-2">
                 <p>
                   Myjnia Cystern Samochodowych
                 </p>
@@ -32,7 +32,7 @@
                   CLEANING STATION
                 </p>
               </div>
-              <div class="w-2/5 px-2">
+              <div class="w-1/2 border border-blue-500 px-2">
                 <p>
                   MRC Carchem II, Ćwiklik Piotr
                   <br />
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="flex border border-blue-500 border-t-0">
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border-l border-r border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">1 Wjazd/Einfahrt/Arrival:</span> {{ certificate.date_of_arrival }}
             </p>
@@ -59,7 +59,7 @@
               <span class="text-blue-800 font-bold">Wyjazd/Klant/Departure:</span> {{ certificate.date_of_departure }}
             </p>
           </div>
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">2 Seria / Serien-Nummer / Serial Number</span>
             </p>
@@ -68,8 +68,8 @@
             </p>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0">
-          <div class="w-1/2 px-2">
+        <div class="flex border-r border-l border-blue-500 border-t-0">
+          <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">3 Nazwa Firmy / Klant / Client / Customer</span>
             </p>
@@ -87,7 +87,7 @@
               NIP: {{ certificate.contractor.nip }}
             </p>
           </div>
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">4 Numer Identifikacyjny / Identificatiner / NO d'identification / Identification Number</span>
               <br />
@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="flex border border-blue-500 border-t-0">
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">5 Zakres Mycia / Waschen Bereich / Prestations complementaires / Additional Service</span>
             </p>
@@ -118,7 +118,7 @@
               <span class="text-blue-800 font-bold">EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</span>
             </p>
           </div>
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">6 Procedura Mycia / Prozedur Bereich / Procedures de lavage / Cleaning Procedures</span>
             </p>
@@ -128,7 +128,7 @@
           </div>
         </div>
         <div class="flex border border-blue-500 border-t-0">
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border-l border-r border-blue-500 px-2">
             <div>
               <div class="flex">
                 <div class="w-4/4">
@@ -139,7 +139,7 @@
               </div>
             </div>
           </div>
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <div>
               <div class="flex">
                 <div class="w-4/4">
@@ -152,24 +152,19 @@
           </div>
         </div>
         <div class="flex border border-blue-500 border-t-0">
-          <div class="w-1/3 px-2">
+          <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">7 Komora / Chamber / Kammer</span>
             </p>
           </div>
-          <div class="w-1/3 px-2">
+          <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">8 Przegroda / Partition / Trennwand</span>
             </p>
           </div>
-          <div class="w-1/3 px-2">
-            <p>
-              <span class="text-blue-800 font-bold">9 Środki Myjące / Detergents / Reinigungsmittel</span>
-            </p>
-          </div>
         </div>
         <div class="flex border border-blue-500 border-t-0">
-          <div class="w-1/3 px-2">
+          <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <div>
               <div class="flex">
                 <div class="w-4/4">
@@ -178,7 +173,7 @@
               </div>
             </div>
           </div>
-          <div class="w-1/3 px-2">
+          <div class="w-1/2 border-l border-r border-blue-500 px-2">
             <div>
               <div class="flex">
                 <div class="w-4/4">
@@ -187,20 +182,19 @@
               </div>
             </div>
           </div>
-          <div class="w-1/3 px-2">
-            <div>
-              <div class="flex">
-                <div class="w-4/4">
-                  <span v-for="detergent in certificate.detergents" :key="detergent.id">
-                    {{ detergent.name }},
-                  </span>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div class="flex border border-blue-500">
+          <div class="w-full border-r border-l border-blue-500 px-2">
+            <p>
+              <span class="text-blue-800 font-bold">9 Środki Myjące / Detergents / Reinigungsmittel</span>
+            </p>
+            <span v-for="detergent in certificate.detergents" :key="detergent.id">
+              {{ detergent.name }},
+            </span>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0">
-          <div class="w-full px-2">
+        <div class="flex border border-blue-500">
+          <div class="w-full border-l border-r border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">10 Ostatni produkt / Letze Produkt / Demier Produit Transporte / Previous load
               Nazwa / Nom / Name</span>
@@ -208,8 +202,8 @@
             {{ certificate.last_product }}
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0">
-          <div class="w-full px-2">
+        <div class="flex border border-blue-500">
+          <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">11 Komentarz / Erklarung / Observations / Comments</span>
             </p>
@@ -217,16 +211,14 @@
               Cysterne oplombowano plombami nr: {{ certificate.seals }}
             </p>
           </div>
-        </div>
-        <div class="flex border border-blue-500 border-t-0">
-          <div class="w-full px-2">
+          <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">12 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
             </p>
           </div>
         </div>
         <div class="flex border border-blue-500 border-t-0">
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">13 Pieczatka / Stamp / Stempel</span>
               <br />
@@ -239,7 +231,7 @@
               Podpis / Utershift / Signature
             </p>
           </div>
-          <div class="w-1/2 px-2">
+          <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 font-bold">14 Kierowca / Fahrer / Conducteur / Driver</span>
               <br />

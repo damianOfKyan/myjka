@@ -17,7 +17,7 @@ class ContractorsController extends Controller
             'filters' => Request::all('search', 'trashed'),
             'contractors' => Contractor::orderBy('name')
                 ->filter(Request::only('search', 'trashed'))
-                ->paginate(10)
+                ->paginate(30)
                 ->withQueryString()
                 ->through(fn ($contractor) => [
                     'id' => $contractor->id,

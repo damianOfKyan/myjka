@@ -23,7 +23,7 @@ class CertificatesController extends Controller
             'filters' => Request::all('search', 'trashed'),
             'certificates' => Certificate::orderBy('updated_at', 'desc')
                 ->filter(Request::only('search', 'trashed'))
-                ->paginate(10)
+                ->paginate(30)
                 ->withQueryString()
                 ->through(fn ($certificate) => [
                     'id' => $certificate->id,
