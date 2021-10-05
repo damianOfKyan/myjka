@@ -53,17 +53,27 @@ class ContractorsController extends Controller
 
     public function store()
     {
-        $contact = collect(Request::input('contact'));
+        $contact = Contact::create(
+            Request::validate([
+                'first_name' => ['nullable', 'max:50'],
+                'last_name' => ['nullable', 'max:50'],
+                'email' => ['nullable', 'max:50', 'email'],
+                'phone' => ['nullable', 'max:50'],
+                'address' => ['nullable', 'max:150'],
+                'city' => ['nullable', 'max:50'],
+                'country' => ['nullable', 'max:2'],
+                'postal_code' => ['nullable', 'max:25'],
+            ])
+        );
 
         $validated = Request::validate([
             'code' => ['required', 'max:50'],
             'name' => ['required', 'max:100'],
             'nip' => ['required', 'max:20'],
-            'contact.id' => ['required', 'exists:contacts,id'],
         ]);
 
         $newArr = $validated;
-        $newArr['contact_id'] = $validated['contact']['id'];
+        $newArr['contact_id'] = $contact->id;
         unset($newArr['contact']);
 
         Contractor::create($newArr);
