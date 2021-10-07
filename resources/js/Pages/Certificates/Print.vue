@@ -160,51 +160,27 @@
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">7 Komora</span> / Chamber / Kammer</span>
+              <div class="w-4/4 font-bold">
+                  {{ certificate.chamber }}
+                </div>
             </p>
           </div>
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">8 Przegroda</span> / Partition / Trennwand</span>
-            </p>
-          </div>
-        </div>
-        <div class="flex border border-blue-500 border-t-0 min-h-xs">
-          <div class="w-1/2 border-r border-l border-blue-500 px-2">
-            <div>
-              <div class="flex">
-                <div class="w-4/4 font-bold">
-                  {{ certificate.chamber }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="w-1/2 border-l border-r border-blue-500 px-2">
-            <div>
-              <div class="flex">
-                <div class="w-4/4 font-bold">
+              <div class="w-4/4 font-bold">
                   {{ certificate.partitions }}
                 </div>
-              </div>
-            </div>
+            </p>
           </div>
         </div>
-        <!-- <div class="flex border border-blue-500">
-          <div class="w-full border-t-0 border-r border-l border-blue-500 px-2">
-            <p>
-              <span class="text-blue-800 text-xxs"><span class="font-bold">9 Środki Myjące</span> / Detergents / Reinigungsmittel</span>
-            </p>
-            <span v-for="detergent in certificate.detergents" :key="detergent.id" class="font-bold">
-              {{ detergent.name }},
-            </span>
-          </div>
-        </div> -->
-        <div class="flex border border-blue-500 min-h-xs">
+        <div class="flex border border-t-0 border-blue-500 min-h-xs">
           <div class="w-full border-l border-r border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">9 Ostatni produkt</span> / Letze Produkt / Demier Produit Transporte / Previous load
               Nazwa / Nom / Name</span>
             </p>
-            <div class="font-bold">{{ certificate.last_product }}</div>
+            <div class="font-bold text-center">{{ certificate.last_product }}</div>
           </div>
         </div>
         <div class="flex border border-blue-500 min-h-xs">
