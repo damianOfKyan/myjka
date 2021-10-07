@@ -201,7 +201,7 @@
         <div class="flex border border-blue-500">
           <div class="w-full border-l border-r border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 text-xxs"><span class="font-bold">10 Ostatni produkt</span> / Letze Produkt / Demier Produit Transporte / Previous load
+              <span class="text-blue-800 text-xxs"><span class="font-bold">9 Ostatni produkt</span> / Letze Produkt / Demier Produit Transporte / Previous load
               Nazwa / Nom / Name</span>
             </p>
             <div class="font-bold">{{ certificate.last_product }}</div>
@@ -210,7 +210,7 @@
         <div class="flex border border-blue-500">
           <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 text-xxs"><span class="font-bold">11 Komentarz</span> / Erklarung / Observations / Comments</span>
+              <span class="text-blue-800 text-xxs"><span class="font-bold">10 Komentarz</span> / Erklarung / Observations / Comments</span>
             </p>
             <p class="font-bold">
               Cysterne oplombowano plombami nr: {{ certificate.seals }}
@@ -218,14 +218,14 @@
           </div>
           <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold text-xxs">12 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
+              <span class="text-blue-800 font-bold text-xxs">11 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
             </p>
           </div>
         </div>
         <div class="flex border border-blue-500 border-t-0">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 text-xxs"><span class="font-bold">13 Pieczatka</span> / Stamp / Stempel</span>
+              <span class="text-blue-800 text-xxs"><span class="font-bold">12 Pieczatka</span> / Stamp / Stempel</span>
               <br />
               <span class="font-bold">Nazwisko imie name / Nom</span>
             </p>
@@ -238,7 +238,7 @@
           </div>
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold text-xxs">14 Kierowca / Fahrer / Conducteur / Driver</span>
+              <span class="text-blue-800 font-bold text-xxs">13 Kierowca / Fahrer / Conducteur / Driver</span>
               <br />
               <span class="font-bold">Nazwisko imie / Name / Nom</span>
             </p>
