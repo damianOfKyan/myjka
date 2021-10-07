@@ -48,6 +48,7 @@ module.exports = {
     },
     minHeight: {
       'xs': '100px',
+      'sm': '150px',
     },
     extend: {
       borderColor: theme => ({

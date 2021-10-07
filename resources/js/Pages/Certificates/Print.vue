@@ -11,8 +11,14 @@
       <img id="watermark" :src="watermark_src" width="30%" height="30%" />
       <div id="pdf-generate" class="max-w-screen-md m-auto p-2 pl-0 text-xs text-black bg-white mt-2">
         <div class="flex">
-          <div class="w-3/6 pb-2 pl-2"><img :src="image_src" width="35%" height="35%" /></div>
-          <div class="w-1/6 pb-2 pl-2 font-bold">Orginał | Kopia</div>
+          <div class="w-4/6 pb-2 pl-2">
+            <div class="flex">
+              <div class="w-4/6 pb-2 pl-2 font-bold">
+                <img :src="image_src" width="55%" height="55%" />
+              </div>
+              <div class="w-2/6 pb-2 pl-2 font-bold">Orginał | Kopia</div>
+            </div>
+          </div>
           <div class="w-2/6 text-center text-white bg-blue-500 text-lg">
             <h1 class="bg-blue-500">Certyfikat Czystości</h1>
             <h2>Cleaning Document</h2>
@@ -198,13 +204,18 @@
             </p>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0 min-h-xs">
+        <div class="flex border border-blue-500 border-t-0 min-h-sm">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">12 Pieczatka</span> / Stamp / Stempel</span>
               <br />
               <span class="font-bold">Nazwisko imie name / Nom</span>
             </p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <br />
             <br />
             <br />
@@ -218,6 +229,10 @@
               <br />
               <span class="font-bold">Nazwisko imie / Name / Nom</span>
             </p>
+            <br />
+            <br />
+            <br />
+            <br />
             <br />
             <br />
             <br />
