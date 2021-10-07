@@ -147,6 +147,10 @@
                   <span v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id" class="font-bold">
                     {{ washing_procedure.name }}<br />
                   </span>
+                  <br />
+                  <span v-for="detergent in certificate.detergents" :key="detergent.id" class="font-bold">
+                    {{ detergent.name }},
+                  </span>
                 </div>
               </div>
             </div>
@@ -184,7 +188,7 @@
             </div>
           </div>
         </div>
-        <div class="flex border border-blue-500">
+        <!-- <div class="flex border border-blue-500">
           <div class="w-full border-t-0 border-r border-l border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">9 Środki Myjące</span> / Detergents / Reinigungsmittel</span>
@@ -193,7 +197,7 @@
               {{ detergent.name }},
             </span>
           </div>
-        </div>
+        </div> -->
         <div class="flex border border-blue-500">
           <div class="w-full border-l border-r border-blue-500 px-2">
             <p>
