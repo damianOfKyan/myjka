@@ -11,8 +11,9 @@
       <img id="watermark" :src="watermark_src" width="30%" height="30%" />
       <div id="pdf-generate" class="max-w-screen-md m-auto p-2 pl-0 text-sm text-black bg-white mt-2">
         <div class="flex">
-          <div class="w-1/2 pb-2 pl-2"><img :src="image_src" width="35%" height="35%" /></div>
-          <div class="w-1/2 text-center text-white bg-blue-500 text-lg">
+          <div class="w-3/6 pb-2 pl-2"><img :src="image_src" width="35%" height="35%" /></div>
+          <div class="w-1/6 pb-2 pl-2">Orginał | Kopia</div>
+          <div class="w-2/6 text-center text-white bg-blue-500 text-lg">
             <h1 class="bg-blue-500">Certyfikat Czystości</h1>
             <h2>Cleaning Document</h2>
           </div>
@@ -53,15 +54,15 @@
         <div class="flex border border-blue-500 border-t-0">
           <div class="w-1/2 border-l border-r border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">1 Wjazd/Einfahrt/Arrival:</span> {{ certificate.date_of_arrival }}
+              <span class="text-blue-800"><span class="font-bold">1 Wjazd</span>/Einfahrt/Arrival:</span> {{ certificate.date_of_arrival }}
             </p>
             <p>
-              <span class="text-blue-800 font-bold">Wyjazd/Klant/Departure:</span> {{ certificate.date_of_departure }}
+              <span class="text-blue-800"><span class="font-bold">Wyjazd</span>/Klant/Departure:</span> {{ certificate.date_of_departure }}
             </p>
           </div>
           <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">2 Seria / Serien-Nummer / Serial Number</span>
+              <span class="text-blue-800"><span class="font-bold">2 Seria</span> / Serien-Nummer / Serial Number</span>
             </p>
             <p class="text-red-500 font-bold">
               {{ certificate.series }}
@@ -71,7 +72,7 @@
         <div class="flex border-r border-l border-blue-500 border-t-0">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">3 Nazwa Firmy / Klant / Client / Customer</span>
+              <span class="text-blue-800"><span class="font-bold">3 Nazwa Firmy</span> / Klant / Client / Customer</span>
             </p>
             <p>
               {{ certificate.contractor.name }}
@@ -89,17 +90,17 @@
           </div>
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">4 Numer Identifikacyjny / Identificatiner / NO d'identification / Identification Number</span>
+              <span class="text-blue-800"><span class="font-bold">4 Numer Identifikacyjny</span> / Identificatiner / NO d'identification / Identification Number</span>
               <br />
-              <span class="text-blue-800 font-bold">Pojazd / Fahrzeug / Vehicule / Vehicle</span>
+              <span class="text-blue-800"><span class="font-bold">Pojazd</span> / Fahrzeug / Vehicule / Vehicle</span>
             </p>
             <p>
               {{ certificate.tractor }}
             </p>
             <br />
             <p>
-              <span class="text-blue-800 font-bold">
-                Cysterna, Tank-kontener / Tankwagen,
+              <span class="text-blue-800">
+                <span class="font-bold">Cysterna</span>, Tank-kontener / Tankwagen,
                 <br />
                 Tank-kontener / Cisterne, Conteneur / Tank, Container
               </span>
@@ -112,18 +113,18 @@
         <div class="flex border border-blue-500 border-t-0">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">5 Zakres Mycia / Waschen Bereich / Prestations complementaires / Additional Service</span>
+              <span class="text-blue-800"><span class="font-bold">5 Zakres Mycia</span> / Waschen Bereich / Prestations complementaires / Additional Service</span>
             </p>
             <p>
-              <span class="text-blue-800 font-bold">EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</span>
+              <span class="text-blue-800"><span class="font-bold">EFTCO Code   Opis</span> / Beschreibung / Deskripcjon / Description</span>
             </p>
           </div>
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">6 Procedura Mycia / Prozedur Bereich / Procedures de lavage / Cleaning Procedures</span>
+              <span class="text-blue-800"><span class="font-bold">6 Procedura Mycia</span> / Prozedur Bereich / Procedures de lavage / Cleaning Procedures</span>
             </p>
             <p>
-              <span class="text-blue-800 font-bold">EFTCO Code   Opis / Beschreibung / Deskripcjon / Description</span>
+              <span class="text-blue-800"><span class="font-bold">EFTCO Code   Opis</span> / Beschreibung / Deskripcjon / Description</span>
             </p>
           </div>
         </div>
@@ -154,12 +155,12 @@
         <div class="flex border border-blue-500 border-t-0">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">7 Komora / Chamber / Kammer</span>
+              <span class="text-blue-800"><span class="font-bold">7 Komora</span> / Chamber / Kammer</span>
             </p>
           </div>
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">8 Przegroda / Partition / Trennwand</span>
+              <span class="text-blue-800"><span class="font-bold">8 Przegroda</span> / Partition / Trennwand</span>
             </p>
           </div>
         </div>
@@ -186,7 +187,7 @@
         <div class="flex border border-blue-500">
           <div class="w-full border-r border-l border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">9 Środki Myjące / Detergents / Reinigungsmittel</span>
+              <span class="text-blue-800"><span class="font-bold">9 Środki Myjące</span> / Detergents / Reinigungsmittel</span>
             </p>
             <span v-for="detergent in certificate.detergents" :key="detergent.id">
               {{ detergent.name }},
@@ -196,7 +197,7 @@
         <div class="flex border border-blue-500">
           <div class="w-full border-l border-r border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">10 Ostatni produkt / Letze Produkt / Demier Produit Transporte / Previous load
+              <span class="text-blue-800"><span class="font-bold">10 Ostatni produkt</span> / Letze Produkt / Demier Produit Transporte / Previous load
               Nazwa / Nom / Name</span>
             </p>
             {{ certificate.last_product }}
@@ -205,7 +206,7 @@
         <div class="flex border border-blue-500">
           <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">11 Komentarz / Erklarung / Observations / Comments</span>
+              <span class="text-blue-800"><span class="font-bold">11 Komentarz</span> / Erklarung / Observations / Comments</span>
             </p>
             <p>
               Cysterne oplombowano plombami nr: {{ certificate.seals }}
@@ -220,7 +221,7 @@
         <div class="flex border border-blue-500 border-t-0">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold">13 Pieczatka / Stamp / Stempel</span>
+              <span class="text-blue-800"><span class="font-bold">13 Pieczatka</span> / Stamp / Stempel</span>
               <br />
               Nazwisko imie name / Nom
             </p>
