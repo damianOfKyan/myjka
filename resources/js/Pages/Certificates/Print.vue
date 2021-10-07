@@ -110,7 +110,7 @@
             </p>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0">
+        <div class="flex border border-blue-500 border-t-0 min-h-xs">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">5 Zakres Mycia</span> / Waschen Bereich / Prestations complementaires / Additional Service</span>
@@ -128,7 +128,7 @@
             </p>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0">
+        <div class="flex border border-blue-500 border-t-0 min-h-xs">
           <div class="w-1/2 border-l border-r border-blue-500 px-2">
             <div>
               <div class="flex">
@@ -149,14 +149,14 @@
                   </span>
                   <br />
                   <span v-for="detergent in certificate.detergents" :key="detergent.id" class="font-bold">
-                    {{ detergent.name }},
+                    {{ detergent.name }}<br />
                   </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0">
+        <div class="flex border border-blue-500 border-t-0 min-h-xs">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">7 Komora</span> / Chamber / Kammer</span>
@@ -168,7 +168,7 @@
             </p>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0">
+        <div class="flex border border-blue-500 border-t-0 min-h-xs">
           <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <div>
               <div class="flex">
@@ -198,7 +198,7 @@
             </span>
           </div>
         </div> -->
-        <div class="flex border border-blue-500">
+        <div class="flex border border-blue-500 min-h-xs">
           <div class="w-full border-l border-r border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">9 Ostatni produkt</span> / Letze Produkt / Demier Produit Transporte / Previous load
@@ -207,7 +207,7 @@
             <div class="font-bold">{{ certificate.last_product }}</div>
           </div>
         </div>
-        <div class="flex border border-blue-500">
+        <div class="flex border border-blue-500 min-h-xs">
           <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">10 Komentarz</span> / Erklarung / Observations / Comments</span>
@@ -222,7 +222,7 @@
             </p>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0">
+        <div class="flex border border-blue-500 border-t-0 min-h-xs">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">12 Pieczatka</span> / Stamp / Stempel</span>

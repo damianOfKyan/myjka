@@ -46,6 +46,9 @@ module.exports = {
       '6xl': '4rem',
       '7xl': '5rem',
     },
+    minHeight: {
+      'xs': '100px',
+    },
     extend: {
       borderColor: theme => ({
         DEFAULT: theme('colors.gray.200', 'currentColor'),
