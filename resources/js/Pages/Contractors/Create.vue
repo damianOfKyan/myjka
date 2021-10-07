@@ -12,9 +12,6 @@
           <text-input v-model="form.nip" :error="form.errors.nip" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contractors.Create.Contractors.NIP')" />
           <!-- <single-select-input v-model="form.contact" :options="form.contacts" :multiple="false" :close-on-select="true" :error="form.errors.contact_id" class="pr-6 pb-8 w-full" :label="translate('messages.Contractors.Create.Contractors.Contact')" :selection="'label'" /> -->
         </div>
-        <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-end items-center">
-          <loading-button :loading="form.processing" class="btn-indigo" type="submit">{{ translate('messages.Save') }}</loading-button>
-        </div>
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
           <text-input v-model="form.first_name" :error="form.errors.first_name" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contacts.Create.FirstName')" />
           <text-input v-model="form.last_name" :error="form.errors.last_name" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contacts.Create.LastName')" />
@@ -275,6 +272,9 @@
             <option value="ZW">Zimbabwe</option>
           </select-input>
           <text-input v-model="form.postal_code" :error="form.errors.postal_code" class="pr-6 pb-8 w-full lg:w-1/2" :label="translate('messages.Contacts.Create.PostalCode')" />
+        </div>
+        <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-end items-center">
+          <loading-button :loading="form.processing" class="btn-indigo" type="submit">{{ translate('messages.Save') }}</loading-button>
         </div>
       </form>
     </div>
