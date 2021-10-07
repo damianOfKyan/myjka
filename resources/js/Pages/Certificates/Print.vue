@@ -9,7 +9,7 @@
 
     <div id="pdf-generate-wrapper">
       <img id="watermark" :src="watermark_src" width="30%" height="30%" />
-      <div id="pdf-generate" class="max-w-screen-md m-auto p-2 pl-0 text-sm text-black bg-white mt-2">
+      <div id="pdf-generate" class="max-w-screen-md m-auto p-2 pl-0 text-xs text-black bg-white mt-2">
         <div class="flex">
           <div class="w-3/6 pb-2 pl-2"><img :src="image_src" width="35%" height="35%" /></div>
           <div class="w-1/6 pb-2 pl-2">Orginał | Kopia</div>
@@ -54,10 +54,10 @@
         <div class="flex border border-blue-500 border-t-0">
           <div class="w-1/2 border-l border-r border-blue-500 px-2">
             <p>
-              <span class="text-blue-800"><span class="font-bold">1 Wjazd</span>/Einfahrt/Arrival:</span> {{ certificate.date_of_arrival }}
+              <span class="text-blue-800"><span class="font-bold">1 Wjazd</span>/Einfahrt/Arrival:</span> <div class="font-bold">{{ certificate.date_of_arrival }}</div>
             </p>
             <p>
-              <span class="text-blue-800"><span class="font-bold">Wyjazd</span>/Klant/Departure:</span> {{ certificate.date_of_departure }}
+              <span class="text-blue-800"><span class="font-bold">Wyjazd</span>/Klant/Departure:</span> <div class="font-bold">{{ certificate.date_of_departure }}</div>
             </p>
           </div>
           <div class="w-1/2 border-r border-l border-blue-500 px-2">
@@ -74,7 +74,7 @@
             <p>
               <span class="text-blue-800"><span class="font-bold">3 Nazwa Firmy</span> / Klant / Client / Customer</span>
             </p>
-            <p>
+            <p class="font-bold">
               {{ certificate.contractor.name }}
               <br />
               {{ certificate.contractor.address }}
@@ -94,7 +94,7 @@
               <br />
               <span class="text-blue-800"><span class="font-bold">Pojazd</span> / Fahrzeug / Vehicule / Vehicle</span>
             </p>
-            <p>
+            <p class="font-bold">
               {{ certificate.tractor }}
             </p>
             <br />
@@ -105,7 +105,7 @@
                 Tank-kontener / Cisterne, Conteneur / Tank, Container
               </span>
             </p>
-            <p>
+            <p class="font-bold">
               {{ certificate.bowser }}
             </p>
           </div>
@@ -133,8 +133,8 @@
             <div>
               <div class="flex">
                 <div class="w-4/4">
-                  <span v-for="washing_range in certificate.washing_ranges" :key="washing_range.id">
-                    {{ washing_range.name }},
+                  <span v-for="washing_range in certificate.washing_ranges" :key="washing_range.id" class="font-bold">
+                    {{ washing_range.name }}<br />
                   </span>
                 </div>
               </div>
@@ -144,8 +144,8 @@
             <div>
               <div class="flex">
                 <div class="w-4/4">
-                  <span v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id">
-                    {{ washing_procedure.name }},
+                  <span v-for="washing_procedure in certificate.washing_procedures" :key="washing_procedure.id" class="font-bold">
+                    {{ washing_procedure.name }}<br />
                   </span>
                 </div>
               </div>
@@ -168,7 +168,7 @@
           <div class="w-1/2 border-r border-l border-blue-500 px-2">
             <div>
               <div class="flex">
-                <div class="w-4/4">
+                <div class="w-4/4 font-bold">
                   {{ certificate.chamber }}
                 </div>
               </div>
@@ -177,7 +177,7 @@
           <div class="w-1/2 border-l border-r border-blue-500 px-2">
             <div>
               <div class="flex">
-                <div class="w-4/4">
+                <div class="w-4/4 font-bold">
                   {{ certificate.partitions }}
                 </div>
               </div>
@@ -189,7 +189,7 @@
             <p>
               <span class="text-blue-800"><span class="font-bold">9 Środki Myjące</span> / Detergents / Reinigungsmittel</span>
             </p>
-            <span v-for="detergent in certificate.detergents" :key="detergent.id">
+            <span v-for="detergent in certificate.detergents" :key="detergent.id" class="font-bold">
               {{ detergent.name }},
             </span>
           </div>
@@ -200,7 +200,7 @@
               <span class="text-blue-800"><span class="font-bold">10 Ostatni produkt</span> / Letze Produkt / Demier Produit Transporte / Previous load
               Nazwa / Nom / Name</span>
             </p>
-            {{ certificate.last_product }}
+            <div class="font-bold">{{ certificate.last_product }}</div>
           </div>
         </div>
         <div class="flex border border-blue-500">
@@ -208,7 +208,7 @@
             <p>
               <span class="text-blue-800"><span class="font-bold">11 Komentarz</span> / Erklarung / Observations / Comments</span>
             </p>
-            <p>
+            <p class="font-bold">
               Cysterne oplombowano plombami nr: {{ certificate.seals }}
             </p>
           </div>
@@ -223,12 +223,12 @@
             <p>
               <span class="text-blue-800"><span class="font-bold">13 Pieczatka</span> / Stamp / Stempel</span>
               <br />
-              Nazwisko imie name / Nom
+              <span class="font-bold">Nazwisko imie name / Nom</span>
             </p>
             <br />
             <br />
             <br />
-            <p>
+            <p class="font-bold">
               Podpis / Utershift / Signature
             </p>
           </div>
@@ -236,15 +236,15 @@
             <p>
               <span class="text-blue-800 font-bold">14 Kierowca / Fahrer / Conducteur / Driver</span>
               <br />
-              Nazwisko imie / Name / Nom
+              <span class="font-bold">Nazwisko imie / Name / Nom</span>
             </p>
             <br />
             <br />
             <br />
-            <p>
+            <p class="font-bold">
               <i>{{ certificate.driver[0].first_name }} {{ certificate.driver[0].last_name }}</i>
             </p>
-            <p>
+            <p class="font-bold">
               Podpis / Utershift / Signature
             </p>
           </div>
