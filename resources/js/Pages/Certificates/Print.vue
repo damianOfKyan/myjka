@@ -274,7 +274,7 @@ export default {
         filename: 'myfile.pdf',
         // image: { type: 'jpeg', quality: 0.98 },
         image: { type: 'png' },
-        html2canvas: { scale: 2 },
+        html2canvas: { scale: 4 },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
       }
       html2pdf.default( element, opt )
