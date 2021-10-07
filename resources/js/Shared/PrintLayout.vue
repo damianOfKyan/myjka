@@ -3,7 +3,7 @@
     <div class="md:flex md:flex-col">
       <div class="md:h-screen md:flex md:flex-col">
         <div class="md:flex md:flex-shrink-0">
-          <div class="bg-white border-b w-full p-4 md:py-0 md:px-12 text-sm md:text-md flex justify-between items-center">
+          <div class="bg-white w-full p-4 md:py-0 md:px-12 text-sm md:text-md flex justify-between items-center">
             <div class="mt-1 mr-4">{{ $page.props.auth.user.name }}</div>
 
           </div>
