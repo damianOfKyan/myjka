@@ -185,7 +185,7 @@
           </div>
         </div>
         <div class="flex border border-blue-500">
-          <div class="w-full border-r border-l border-blue-500 px-2">
+          <div class="w-full border-t-0 border-r border-l border-blue-500 px-2">
             <p>
               <span class="text-blue-800"><span class="font-bold">9 Środki Myjące</span> / Detergents / Reinigungsmittel</span>
             </p>
