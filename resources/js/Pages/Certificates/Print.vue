@@ -1,12 +1,5 @@
 <template>
   <div>
-    <!-- <h1 class="mb-8 font-sans font-bold text-3xl">
-      <inertia-link class="text-black hover:text-indigo-600" :href="route('certificates')">{{ translate('messages.Certificates.Index.Self') }}</inertia-link>
-      <span class="text-black font-medium">/</span>
-      <inertia-link class="text-red-600 hover:text-red-400" :href="route('certificates.edit', certificate.id)">{{ certificate.series }}</inertia-link>
-    </h1>
-    <button class="text-white btn-indigo ml-auto hover:underline mb-8" tabindex="-1" type="button" @click="generatePdf">{{ translate('messages.GeneratePDF') }}</button> -->
-
     <div id="pdf-generate-wrapper">
       <img id="watermark" :src="watermark_src" width="30%" height="30%" />
       <div id="pdf-generate" class="max-w-screen-md m-auto p-2 pl-0 text-xs text-black bg-white mt-2">
@@ -71,7 +64,7 @@
               <span class="text-blue-800 text-xxs"><span class="font-bold">2 Seria</span> / Serien-Nummer / Serial Number</span>
             </p>
             <p class="text-red-500 font-bold">
-              {{ certificate.series }}
+              {{ certificate.series }} - {{ certificate.id }}
             </p>
           </div>
         </div>
