@@ -189,17 +189,12 @@
           </div>
         </div>
         <div class="flex border border-blue-500 min-h-xs">
-          <div class="w-1/2 border-r border-l border-blue-500 px-2">
+          <div class="w-full border-r border-l border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">10 Komentarz</span> / Erklarung / Observations / Comments</span>
             </p>
             <p class="font-bold">
               Cysterne oplombowano plombami nr: {{ certificate.seals }}
-            </p>
-          </div>
-          <div class="w-1/2 border-r border-l border-blue-500 px-2">
-            <p>
-              <span class="text-blue-800 font-bold text-xxs">11 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
             </p>
           </div>
         </div>
@@ -223,6 +218,12 @@
             </p>
           </div>
           <div class="w-1/2 border border-blue-500 px-2">
+            <p>
+              <span class="text-blue-800 font-bold text-xxs">11 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
+            </p>
+            <br />
+            <br />
+            <br />
             <p>
               <span class="text-blue-800 font-bold text-xxs">13 Kierowca / Fahrer / Conducteur / Driver</span>
               <br />
