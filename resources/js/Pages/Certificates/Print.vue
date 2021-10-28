@@ -93,6 +93,7 @@
               <br />
               <span class="text-blue-800 text-xxs"><span class="font-bold">Pojazd</span> / Fahrzeug / Vehicule / Vehicle</span>
             </p>
+            <br />
             <p class="font-bold">
               {{ certificate.tractor }}
             </p>
@@ -104,6 +105,7 @@
                 Tank-kontener / Cisterne, Conteneur / Tank, Container
               </span>
             </p>
+            <br />
             <p class="font-bold">
               {{ certificate.bowser }}
             </p>
