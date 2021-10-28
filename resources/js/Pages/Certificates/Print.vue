@@ -107,6 +107,10 @@
             <p class="font-bold">
               {{ certificate.bowser }}
             </p>
+            <br />
+            <p class="font-bold">
+              {{ certificate.container }}
+            </p>
           </div>
         </div>
         <div class="flex border border-blue-500 border-t-0 min-h-xs">
