@@ -64,7 +64,7 @@
               <span class="text-blue-800 text-xxs"><span class="font-bold">2 Seria</span> / Serien-Nummer / Serial Number</span>
             </p>
             <p class="text-red-500 font-bold">
-              {{ certificate.series }} - {{ certificate.id }}
+              {{ certificate.series }} - {{ certificate.id }} - {{ certificate.created_at }}
             </p>
           </div>
         </div>
@@ -115,8 +115,8 @@
             </p>
           </div>
         </div>
-        <div class="flex border border-blue-500 border-t-0 min-h-xs">
-          <div class="w-1/2 border border-blue-500 px-2">
+        <div class="flex border border-blue-500 border-t-0 border-b-0 min-h-xs">
+          <div class="w-1/2 border border-t-0 border-b-0 border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">5 Zakres Mycia</span> / Waschen Bereich / Prestations complementaires / Additional Service</span>
             </p>
@@ -124,7 +124,7 @@
               <span class="text-blue-800 text-xxs"><span class="font-bold">EFTCO Code   Opis</span> / Beschreibung / Deskripcjon / Description</span>
             </p>
           </div>
-          <div class="w-1/2 border border-blue-500 px-2">
+          <div class="w-1/2 border border-t-0 border-b-0 border-blue-500 px-2">
             <p>
               <span class="text-blue-800 text-xxs"><span class="font-bold">6 Procedura Mycia</span> / Prozedur Bereich / Procedures de lavage / Cleaning Procedures</span>
             </p>

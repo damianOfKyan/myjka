@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Collection;
 use Inertia\Inertia;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class CertificatesController extends Controller
 {
@@ -72,6 +73,7 @@ class CertificatesController extends Controller
 
         return Inertia::render('Certificates/Create', [
             'certificate' => [
+                'series' => Str::random(10),
                 'drivers' => $drivers,
                 'contractors' => Contractor::orderBy('name')->get()->map->only(
                     'id',
@@ -340,7 +342,10 @@ class CertificatesController extends Controller
                     'phone',
                     'email'
                 ),
-                'contractor' => $contractor
+                'contractor' => $contractor,
+                'created_at' => Carbon::parse(
+                    $certificate->created_at
+                )->format('Y-m-d @ H:i'),
             ],
         ]);
     }

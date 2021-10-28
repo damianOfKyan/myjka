@@ -63,10 +63,19 @@ export default {
     certificate: Object,
   },
   remember: 'form',
+  makeid(length) {
+    var result           = ''
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    var charactersLength = characters.length
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength))
+    }
+    return result
+  },
   data() {
     return {
       form: this.$inertia.form({
-        series: null,
+        series: this.certificate.series,
         date_of_arrival: null,
         date_of_departure: null,
         tractor: null,
