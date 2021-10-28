@@ -222,8 +222,6 @@
               <span class="text-blue-800 font-bold text-xxs">11 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
             </p>
             <br />
-            <br />
-            <br />
             <p>
               <span class="text-blue-800 font-bold text-xxs">13 Kierowca / Fahrer / Conducteur / Driver</span>
               <br />
