@@ -233,7 +233,6 @@
             <br />
             <br />
             <br />
-            <br />
             <p class="font-bold">
               <i>{{ certificate.driver[0].first_name }} {{ certificate.driver[0].last_name }}</i>
             </p>
