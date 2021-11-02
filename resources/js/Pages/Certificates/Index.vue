@@ -18,6 +18,7 @@
     <div class="bg-white rounded-md shadow overflow-x-vixible">
       <table class="w-full whitespace-nowrap">
         <tr class="text-left font-bold">
+          <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Id') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Series') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Contractor') }}</th>
           <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.DateOfArrival') }}</th>
@@ -32,6 +33,11 @@
           <!-- <th class="px-6 pt-6 pb-4">{{ translate('messages.Certificates.Index.Detergent') }}</th> -->
         </tr>
         <tr v-for="certificate in certificates.data" :key="certificate.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('certificates.edit', certificate.id)" tabindex="-1">
+              {{ certificate.id }}
+            </inertia-link>
+          </td>
           <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('certificates.edit', certificate.id)" tabindex="-1">
               {{ certificate.series }}

@@ -54,6 +54,7 @@ return [
             'Self' => 'Certyfikaty',
             'Contractor' => 'Kontrahent',
             'Series' => 'Seria',
+            'Id' => 'Id',
             'DateOfArrival' => 'Data wjazdu',
             'DateOfDeparture' => 'Data wyjazdu',
             'Tractor' => 'Ciągnik',

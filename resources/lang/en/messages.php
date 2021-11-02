@@ -53,6 +53,7 @@ return [
         'Index' => [
             'Self' => 'Certyfikaty',
             'Contractor' => 'Kontrahent',
+            'Id' => 'Id',
             'Series' => 'Seria',
             'DateOfArrival' => 'Data wjazdu',
             'DateOfDeparture' => 'Data wyjazdu',

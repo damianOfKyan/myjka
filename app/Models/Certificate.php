@@ -72,6 +72,7 @@ class Certificate extends Model
             $query->where(function ($query) use ($search) {
                 $query->where('series', 'like', '%'.$search.'%')
                 ->orWhere('date_of_arrival', 'like', '%'.$search.'%')
+                ->orWhere('id', 'like', '%'.$search.'%')
                 // ->orWhere('date_of_departure', 'like', '%'.$search.'%')
                 ->orWhere('tractor', 'like', '%'.$search.'%')
                 ->orWhere('bowser', 'like', '%'.$search.'%')

@@ -201,7 +201,7 @@
         <div class="flex border border-blue-500 border-t-0 min-h-sm">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 text-xxs"><span class="font-bold">12 Pieczatka</span> / Stamp / Stempel</span>
+              <span class="text-blue-800 text-xxs"><span class="font-bold">11 Pieczatka</span> / Stamp / Stempel</span>
               <br />
               <span class="font-bold">Nazwisko imie name / Nom</span>
             </p>
@@ -219,7 +219,7 @@
           </div>
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold text-xxs">11 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
+              <span class="text-blue-800 font-bold text-xxs">12 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
             </p>
             <br />
             <p>
