@@ -64,7 +64,7 @@
               <span class="text-blue-800 text-xxs"><span class="font-bold">2 Seria</span> / Serien-Nummer / Serial Number</span>
             </p>
             <p class="text-red-500 font-bold">
-              {{ certificate.series }} - {{ certificate.id }} - {{ certificate.created_at }}
+              {{ certificate.series }} - {{ certificate.id }}
             </p>
           </div>
         </div>
