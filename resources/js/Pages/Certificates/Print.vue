@@ -9,7 +9,7 @@
               <div class="w-4/6 pb-2 pl-2 font-bold">
                 <img :src="image_src" width="55%" height="55%" />
               </div>
-              <div class="w-2/6 pb-2 pl-2 font-bold">Orginał | Kopia</div>
+              <div class="w-2/6 pb-2 pl-2 font-bold">Oryginał | Kopia</div>
             </div>
           </div>
           <div class="w-2/6 text-center text-white bg-blue-500 text-lg">
@@ -201,9 +201,9 @@
         <div class="flex border border-blue-500 border-t-0 min-h-sm">
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 text-xxs"><span class="font-bold">11 Pieczatka</span> / Stamp / Stempel</span>
+              <span class="text-blue-800 text-xxs"><span class="font-bold">11 Pieczatką</span> / Stamp / Stempel</span>
               <br />
-              <span class="font-bold">Nazwisko imie name / Nom</span>
+              <span class="font-bold">Nazwisko imię name / Nom</span>
             </p>
             <br />
             <br />
@@ -219,13 +219,13 @@
           </div>
           <div class="w-1/2 border border-blue-500 px-2">
             <p>
-              <span class="text-blue-800 font-bold text-xxs">12 Kierowca oswiadcza ze sprawdzil czystosc wymytej cysterny oraz plomby</span>
+              <span class="text-blue-800 font-bold text-xxs">12 Kierowca oświadcza ze sprawdził czystość wymytej cysterny oraz plomby</span>
             </p>
             <br />
             <p>
               <span class="text-blue-800 font-bold text-xxs">13 Kierowca / Fahrer / Conducteur / Driver</span>
               <br />
-              <span class="font-bold">Nazwisko imie / Name / Nom</span>
+              <span class="font-bold">Nazwisko imię / Name / Nom</span>
             </p>
             <br />
             <br />
