@@ -9,7 +9,7 @@
               <div class="w-4/6 pb-2 pl-2 font-bold">
                 <img :src="image_src" width="55%" height="55%" />
               </div>
-              <div class="w-2/6 pb-2 pl-2 font-bold">Oryginał | Kopia</div>
+              <div class="w-2/6 pb-2 pl-2 font-bold"></div>
             </div>
           </div>
           <div class="w-2/6 text-center text-white bg-blue-500 text-lg">
