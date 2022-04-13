@@ -15,7 +15,7 @@ class CreateCertificatesTable extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('contractor_id')->constrained('contacts');
+            $table->foreignId('contractor_id')->constrained('contractors');
             $table->foreignId('driver_id')->nullable()->constrained('contacts');
             // $table->foreignId('washing_procedure_id')->nullable()->constrained('washing_procedures');
             // $table->foreignId('washing_range_id')->nullable()->constrained('washing_ranges');
